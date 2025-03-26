@@ -1,19 +1,19 @@
 body{
-    background-color: rgb(255,112,30);
+    background-color: red;
     margin: 0;
     padding: 0;
 }
 
 nav .d-flex button{
-    background-color: rgba(40,40,40);
-    border-color: rgb(255, 112, 30);
-    color: rgb(255, 112, 30);
+    background-color: rgb(40, 40, 40);
+    border-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
 }
 
 nav .d-flex button:hover{
-    background-color: rgb(255, 112, 30);
-    border-color: rgb(40,40,40);
-    color: rgb(40,40,40);
+    background-color: rgb(255, 0, 0);
+    border-color: rgb(40, 40, 40);
+    color: rgb(40, 40, 40);
 }
 
 .navbar-main-nav .navbar-brand{
@@ -25,71 +25,61 @@ nav .d-flex button:hover{
 }
 
 .search-bar-button{
-    background-color: rgba(255,112,30);
+    background-color: rgb(255, 0, 0);
     border-color: rgb(30, 30, 30);
     color: rgb(30, 30, 30);
 }
 
 .dropdown-toggle, .see-more-button, .page-navigation a{
-    background-color:rgb(255,112,30);
-    border-color: rgba(30,30,30);
-    color: rgba(30,30,30);
+    background-color:rgb(255, 0, 0);
+    border-color: rgb(40, 40, 40);
+    color: rgb(40, 40, 40);
 }
 
 hr{
     border: 2px solid rgb(10,10,10);
 }
 
-#carouselExampleIndicators{
-    width: 100%;
-    object-fit: cover;
+.pokeStoreTitle{
+    background-color: white;
 }
 
-.carousel-slide-container {
-    display: flex;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    background-color: gray;
-}
-
-.carousel-slide-container img{
-    width: 50%;
-    object-fit: cover;
-}
-
-.products-section{
-    padding: 10px;
-    background-color: rgb(230,230,230);
-}
-
-.products-section .row{
+.pokeStoreTitle h1{
     padding: 5px;
+}
+
+.card{
+    border: 1px solid rgb(40, 40, 40);
+    background-color: rgb(40, 40, 40);
 }
 
 .card-title{
     height: 25px;
+    color: white;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 0px;
+    margin: 0px;
 }
 
 .card-text:not(.update-info){
     display: -webkit-box;
+    color: white;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.update-info{
-    margin-top: 10px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .card-img-top{
     height: 250px;
+    background-color: white;
     object-fit:cover;
+    border-bottom: 1px solid rgb(40, 40, 40);
 }
 
 .page-navigation{
@@ -99,11 +89,11 @@ hr{
 .page-navigation a:hover{
     background-color: rgba(230,230,230);
     border-color: rgb(30, 30, 30);
-    color: rgb(30,30,30);
+    color: rgb(30, 30, 30);
 }
 
 .footer{
-    background-color: rgb(30,30,30);
+    background-color: rgb(30, 30, 30);
     padding: 10px;
 }
 
@@ -113,7 +103,7 @@ hr{
 }
 
 .footer img{
-    border: 1px solid rgb(255, 112, 30);
+    border: 1px solid rgb(255, 0, 0);
 }
 
 .footer a{
@@ -121,7 +111,7 @@ hr{
 }
 
 .footer a:hover{
-    color: rgb(255, 112, 30);
+    color: rgb(255, 0, 0);
 }
 
 .loginForm .checkbox{
@@ -134,15 +124,15 @@ hr{
 
 .loginForm button, .registerForm button{
     width: 100%;
-    background-color: rgba(255,112,30);
-    border-color: rgba(30,30,30);
-    color: rgba(30,30,30);
+    background-color: rgb(255, 0, 0);
+    border-color: rgb(40, 40, 40);
+    color: rgb(40, 40, 40);
 }
 
 .loginForm button:hover, .registerForm button:hover{
     background-color: rgb(30, 30, 30);
-    border-color: rgb(255, 112, 30);
-    color: rgb(255, 112, 30);
+    border-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
 }
 
 #modalUserRegister .form-group .row{
@@ -152,15 +142,15 @@ hr{
 #modalUserRegister .modal-footer button{
     width: 100%;
     padding: 10px;
-    background-color: rgba(255,112,30);
-    border-color: rgba(30,30,30);
-    color: rgba(30,30,30);
+    background-color: rgb(255, 0, 0); 
+    border-color: rgb(40, 40, 40);
+    color: rgb(40, 40, 40);
 }
 
 #modalUserRegister .modal-footer button:hover{
     background-color: rgb(30, 30, 30);
-    border-color: rgb(255, 112, 30);
-    color: rgb(255, 112, 30);
+    border-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
 }
 
 #shoppingCart{
@@ -181,6 +171,6 @@ hr{
 }
 
 #shoppingCart .cart-list, .order-summary{
-    border: 1px solid rgb(255,112,30);
+    border: 1px solid rgb(255, 0, 0);
     padding: 10px;
 }

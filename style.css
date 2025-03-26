@@ -70,14 +70,12 @@ hr{
 .card-title{
     height: 25px;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .card-text:not(.update-info){
-    height: 75px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -90,7 +88,7 @@ hr{
 }
 
 .card-img-top{
-    height: 200px;
+    height: 250px;
     object-fit:cover;
 }
 

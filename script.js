@@ -10,7 +10,7 @@ paginationContainer.appendChild(paginationList);
 pokedexPagination.appendChild(paginationContainer);
 
 let currentPage = 1;
-const limit = 10;
+const limit = 15;
 let totalPages = 0;
 
 async function loadPokedexPage(page) {
@@ -27,7 +27,7 @@ async function loadPokedexPage(page) {
             await loadPokemonDetails(pokemon.url);
         }
 
-        totalPages = 3;
+        totalPages = 6;
         createPaginationControls(totalPages);
     } catch (error) {
         console.error("Error in loadPokedexPage: ", error);

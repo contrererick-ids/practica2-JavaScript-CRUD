@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FACEZ</title> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+        <link href="style.css" rel="stylesheet"> 
+    </head>
+
+    <body>
+        <!-- Nav -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-main-nav" data-bs-theme="dark"> 
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="https://i.pinimg.com/736x/73/24/da/7324daee0903190950b8aa7ad2edbf2d.jpg" alt="Logo" width="60" height="40" class="d-inline-block align-text-center">
+                    FACEZ
+                </a>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                    <button class="btn btn-primary search-bar-button" type="submit">Buscar</button>
+                </form>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li> 
+                        <li class="nav-item"><a class="nav-link active" href="" data-bs-toggle="modal" data-bs-target="#modalUserRegister">Registro</a></li> 
+                        <li class="nav-item"><a class="nav-link active" href="#productsSection">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="shopping_cart.html">Mi carrito</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="orders.html">Mis Pedidos</a></li> 
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Mi Cuenta
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Ingresar</a></l> 
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalUserRegister">Registro</a></li> 
+                        <li><a class="dropdown-item" href="orders.html">Mis Pedidos</a></li> 
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Carrusel -->
+        <div class="container-fluid p-0 m-0"> 
+            <div id="carouselExampleIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center align-items-center carousel-slide-container">
+                            <img src="https://cdn.pixabay.com/photo/2022/03/11/10/29/man-7061820_1280.jpg" class="img-fluid" alt="Imagen 1">
+                            <img src="https://cdn.pixabay.com/photo/2020/10/26/18/04/girl-5688103_1280.jpg" class="img-fluid" alt="Imagen 2">
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center carousel-slide-container">
+                            <img src="https://cdn.pixabay.com/photo/2022/02/05/17/57/young-man-6995464_1280.jpg" class="img-fluid" alt="Imagen 3">
+                            <img src="https://cdn.pixabay.com/photo/2020/09/10/06/01/model-5559396_1280.jpg" class="img-fluid" alt="Imagen 4">
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center carousel-slide-container"> 
+                            <img src="https://cdn.pixabay.com/photo/2021/02/11/17/44/balenciaga-6005971_1280.jpg" class="img-fluid" alt="Imagen 3"> 
+                            <img src="https://cdn.pixabay.com/photo/2024/12/07/02/08/dance-9250032_1280.png" class="img-fluid" alt="Imagen 4"> 
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev"> 
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
+                    <span class="visually-hidden">Previous</span> 
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next"> 
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span> 
+                    <span class="visually-hidden">Next</span> 
+                </button>
+            </div>
+            <hr>
+        </div>
+        
+        <!--Sección Productos-->
+        <div id="productsSection" class="container-fluid products-section">
+            <h2>Productos</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <img src="https://i.pinimg.com/736x/29/f8/8e/29f88ea8c3892544c46d4e7b16f14be5.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Maison Margiela Future Low</h5>
+                            <p class="card-text">La Maison Margiela Future Low es una opción perfecta para aquellos que buscan un estilo urbano y moderno.</p>
+                            <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                            <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <img src="https://yasstore.in/wp-content/uploads/2023/08/WhatsApp-Image-2023-07-29-at-10.38.47-AM.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Forum Buckle Low Bad Bunny Blue Tint</h5>
+                            <p class="card-text">Al igual que la variante Café, la característica más destacada de esta zapatilla es la hebilla del tobillo que cruza la lengüeta.</p>
+                            <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                            <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <img src="https://i.pinimg.com/736x/07/b2/ae/07b2aed07dac22353e4db80e48755857.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Jordan IV x Travis Scott "Cactus Jack"</h5>
+                            <p class="card-text">La Jordan IV x Travis Scott "Cactus Jack" es una colaboración única que combina la elegancia de la marca con el estilo del rapero.</p>
+                            <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                            <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                      <img src="https://cdn.pixabay.com/photo/2021/02/11/17/44/balenciaga-6005971_1280.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Balenciaga Triple S</h5>
+                        <p class="card-text">Encuentra la combinación ideal entre comfort y elegancia con los Balenciaga Triple S en color beige.</p>
+                        <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                        <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <img src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fwp-content%2Fblogs.dir%2F6%2Ffiles%2F2019%2F11%2Fadidas-yeezy-boost-350-v2-pirate-reissue-release-black-friday-s.jpg?w=1080&cbr=1&q=90&fit=max" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Yeezy Boost 350 Pirate Black</h5>
+                            <p class="card-text">Con una parte superior de tejido Primeknit completamente negro, los Pirate Black Yeezy Boost 350 combinan un diseño urbano de alta calidad con un estilo elegante.</p>
+                            <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                            <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <img src="https://www.sneakerfiles.com/wp-content/uploads/2022/03/drake-nocta-nike-air-force-1-certified-lover-boy-white-release-date-3.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">NOCTA x Nike Air Force 1 Low Certified Lover Boy</h5>
+                            <p class="card-text">Otros elementos de diseño adicionales son agujetas personalizadas, el logotipo de NOCTA en el talón izquierdo y un nuevo patrón de perforaciones en la puntera.</p>
+                            <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                            <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <img src="https://www.nicekicks.com/files/2021/05/Nike-SB-Dunk-Low-What-The-P-Rod-CZ2239-600-Lead.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Nike SB Dunk Low What The Paul</h5>
+                            <p class="card-text">Su parte superior desigual viene en una variedad de materiales de malla, piel, ante, charol y tejidos. La firma de Paul Rodríguez en la lengüeta y los deubrés metalizados de edición especial completan el diseño.</p>
+                            <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                            <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                      <img src="https://cdn.runrepeat.com/storage/gallery/product_content/40602/nike-pegasus-41-gtx-22242629-main.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Nike Pegasus 41 GTX</h5>
+                        <p class="card-text">Las Nike Pegasus 41 Gore Tex son tus icónicas zapatillas de entrenamiento diario de siempre pero con una protección e impermeabilidad extra.</p>
+                        <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                        <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <img src="https://static.ftshp.digital/img/p/1/0/6/3/2/0/7/1063207-full_product.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Converse x CDG Multi Hearts Chuck 70</h5>
+                            <p class="card-text">La colaboración favorita de los fanáticos, los sneakers Chuck 70 x Comme des Garçons PLAY, le dan un toque divertido a un clásico.</p>
+                            <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                            <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <img src="https://cms-cdn.thesolesupplier.co.uk/2022/02/adidas-yeezy-boost-700-wave-runner.jpeg.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Yeezy Boost 700 Wave Runner</h5>
+                            <p class="card-text">Los Yeezy 700 Boost Wave Runner son los sneakers que llevaron el pivote de Yeezy de una estética elegante y minimalista a una gruesa inspirada en los 90.</p>
+                            <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                            <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <img src="https://media.gq.com.mx/photos/65cf7c63e66791be1e1b8138/master/w_1600%2Cc_limit/tenis-jordan-color-negro-para-usar-con-todo-en-2024-j-balvin-air-jordan-3-rio.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Jordan 3 Retro J Balvin Rio</h5>
+                            <p class="card-text">Los Jordan 3 Retro J Balvin Rio combinan a la perfección el diseño clásico de los Jordan 3 con el estilo característico de J Balvin.</p>
+                            <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                            <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                      <img src="https://5.imimg.com/data5/ANDROID/Default/2024/12/476619256/MX/IN/MO/192412408/product-jpeg-500x500.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Nike SB Dunk Low Ben & Jerry's Chunky Dunky</h5>
+                        <p class="card-text">Inspirándose en el colorido envase de helado de Ben & Jerry's, este lanzamiento va más allá de un simple esquema de colores nuevos y presenta detalles únicos que nunca se habían utilizado en la silueta Dunk Low.</p>
+                        <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                        <p class="card-text update-info"><small class="text-body-secondary">Working on updates...</small></p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-center">
+                <nav class="page-navigation" aria-label="Page avigation">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item" aria-current="page">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+        </div>
+
+        <!--Modal Login-->
+        <div class="modal" id="modalLogin" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ingresar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+                    </div>
+                    <div class="modal-body">
+                        <form class="loginForm">
+                            <div class="form-group">
+                                <h6>Usuario</h6>
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Ingresa tu correo">
+                                        <label for="floatingInputGroup1">Ingresa tu correo</label>
+                                    </div>
+                                    <span class="input-group-text">@</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h6>Contraseña</h6>
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Ingresa tu contraseña">
+                                        <label for="floatingInputGroup1">Ingresa tu contraseña</label> 
+                                    </div>
+                                    <span class="input-group-text">(°)</span>
+                                  </div>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" checked>Recordar mi usuario</label> 
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Login</button> 
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <p>¿No tienes cuenta? </p> 
+                        <a href="" data-bs-toggle="modal" data-bs-target="#modalUserRegister">¡Regístrate aquí!</a>
+                    </div>
+              </div>
+            </div>
+        </div>
+
+        <!--Modal Registro-->
+        <div class="modal" id="modalUserRegister" tabindex="1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Regístrate</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="registerForm">
+                            <div class="form-group">
+                                <h5>Ingresa tus datos</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" id="fiName" placeholder="Ingresa tu nombre"> 
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" id="fiLastName" placeholder="Ingresa tus apellidos"> 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input type="email" class="form-control" id="floatingInput" placeholder="Ingresa tu correo"> 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input type="password" class="form-control" id="floatingPassword" placeholder="Ingresa tu contraseña"> 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input type="password" class="form-control" id="floatingPassword" placeholder="Confirma tu contraseña"> 
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Registrarme</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
+
+    </body>
+    <hr>
+
+    <footer class="d-flex flex-wrap justify-content-between align-items-center footer">
+        <p class="col-md-4 mb-0">© 2025 FACEZ MX</p>
+        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <img src="https://i.pinimg.com/736x/73/24/da/7324daee0903190950b8aa7ad2edbf2d.jpg" alt="Logo" width="60" height="40" class="d-inline-block align-text-center">
+        </a>
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="index.html" class="nav-link px-2">Inicio</a></li>
+          <li class="nav-item"><a href="#productsSection" class="nav-link px-2">Productos</a></li>
+        </ul>
+        <p>Correo electrónico: <a href="mailto:customer-service@facez.com">customer-service@facez.com</a> 
+        <p>Tel: +52 332-840-4624</p> 
+        <p>Horario de atención: Lunes a Viernes de 9:00 am a 6:00 pm</p> 
+        <p>Ubicación: Guadalajara, Jalisco, México</p>
+      </footer>
+
+</html>

@@ -4,6 +4,10 @@ body{
     padding: 0;
 }
 
+h1{
+    color: white;
+}
+
 nav .d-flex button{
     background-color: rgb(40, 40, 40);
     border-color: rgb(255, 0, 0);

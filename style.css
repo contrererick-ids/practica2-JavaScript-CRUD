@@ -90,6 +90,7 @@ hr{
 }
 
 .card-text{
+    height: 75px;
     display: -webkit-box;
     color: white;
     -webkit-line-clamp: 3;

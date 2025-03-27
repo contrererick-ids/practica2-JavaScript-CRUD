@@ -1,19 +1,7 @@
 body{
-    background-color: red;
+    background-color: rgb(60, 90, 166);
     margin: 0;
     padding: 0;
-}
-
-nav .d-flex button{
-    background-color: rgb(40, 40, 40);
-    border-color: rgb(255, 0, 0);
-    color: rgb(255, 0, 0);
-}
-
-nav .d-flex button:hover{
-    background-color: rgb(255, 0, 0);
-    border-color: rgb(40, 40, 40);
-    color: rgb(40, 40, 40);
 }
 
 .navbar-main-nav .navbar-brand{
@@ -25,19 +13,60 @@ nav .d-flex button:hover{
 }
 
 .search-bar-button{
-    background-color: rgb(255, 0, 0);
-    border-color: rgb(30, 30, 30);
-    color: rgb(30, 30, 30);
+    background-color: rgb(40, 40, 40);
+    border-color: rgb(255, 193, 7);
+    color: white;
 }
 
-.dropdown-toggle, .see-more-button, .save-product, .add-to-cart{
-    background-color:white;
+.search-bar-button:hover{
+    background-color: rgb(204, 0, 0);
     border-color: rgb(40, 40, 40);
-    color: rgb(40, 40, 40);
+    color: white;
+}
+
+.dropdown-toggle{
+    background-color:rgb(42, 117, 187);
+    border-color: rgb(255, 193, 7);
+    color: white;
+}
+
+.dropdown-toggle:hover{
+    background-color:rgb(204, 0, 0);
+    border-color: rgb(255, 193, 7);
+    color: white;
+}
+
+.see-more-button, .save-product, .add-to-cart{
+    background-color: rgb(20, 20, 20);
+    border-color: rgb(80, 80, 80);
+    color: white;
+}
+
+.see-more-button:hover{
+    background-color: rgb(255, 193, 7);
+    border-color: rgb(20, 20, 20);
+    color: rgb(20, 20, 20);
+}
+
+.save-product:hover{
+    background-color: rgb(255, 0, 0);
+    border-color: rgb(20, 20, 20);
+    color: white;
+}
+
+.add-to-cart:hover{
+    background-color: rgb(42, 117, 187);
+    border-color: rgb(20, 20, 20);
+    color: white;
 }
 
 hr{
     border: 2px solid rgb(10,10,10);
+}
+
+.products-section-title{
+    padding: 5px;
+    color: white;
 }
 
 .products-section .row{
@@ -90,6 +119,21 @@ hr{
     margin: 0px;
 }
 
+.page-navigation{
+    padding: 10px;
+}
+
+.page-navigation .page-link{
+    background-color: rgb(40, 40, 40);
+    border-color: rgb(40, 40, 40);
+    color: white;
+}
+
+.page-navigation .page-link:hover{
+    background-color: white;
+    color: rgb(40, 40, 40);
+}
+
 .pokeStoreTitle{
     background-color: white;
 }
@@ -104,6 +148,7 @@ hr{
 
 .pokedex-pagination .page-link{
     background-color: rgb(40, 40, 40);
+    border-color: rgb(40, 40, 40);
     color: white;
 }
 

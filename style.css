@@ -107,16 +107,8 @@ hr{
     border-bottom: 1px solid rgb(40, 40, 40);
 }
 
-.product-card .card-text{
-    height: 75px;
-    display: -webkit-box;
-    color: white;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0px;
-    margin: 0px;
+.card-buttons{
+    padding-top: 10px;
 }
 
 .page-navigation{

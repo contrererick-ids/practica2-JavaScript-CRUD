@@ -1,0 +1,103 @@
+/*--------------SHOPPING CART STYLE SHEET--------------*/
+
+/* Body */
+body{
+    background-color: rgb(60, 90, 166);
+    margin: 0;
+    padding: 0;
+}
+
+/*Navbar y botones*/
+.navbar-main-nav .navbar-brand{
+    font-size: 16pt;
+}
+
+.search-bar-button{
+    background-color: rgb(40, 40, 40);
+    border-color: rgb(255, 193, 7);
+    color: white;
+}
+
+.search-bar-button:hover{
+    background-color: rgb(204, 0, 0);
+    border-color: rgb(40, 40, 40);
+    color: white;
+}
+
+.dropdown-toggle{
+    background-color:rgb(42, 117, 187);
+    border-color: rgb(255, 193, 7);
+    color: white;
+}
+
+.dropdown-toggle:hover{
+    background-color:rgb(204, 0, 0);
+    border-color: rgb(255, 193, 7);
+    color: white;
+}
+
+/*Separador*/
+hr{
+    border: 2px solid rgb(10,10,10);
+}
+
+/*Shopping cart*/
+.shoppingCartTitle{
+    background-color: white;
+}
+
+.shoppingCartTitle h1{
+    padding: 5px;
+    color: rgb(40, 40, 40);
+}
+
+.shoppingCartGrid{
+    padding: 5px;
+    background-color: whte;
+}
+
+/*Footer*/
+.footer{
+    background-color: rgb(30, 30, 30);
+    padding: 10px;
+}
+
+.footer p{
+    color: rgb(230, 230, 230);
+    font-size: 10pt;
+}
+
+.footer img{
+    border: 1px solid rgb(255, 0, 0);
+}
+
+.footer a{
+    color: rgb(230,230,230);
+}
+
+.footer a:hover{
+    color: rgb(255, 0, 0);
+}
+
+/*
+#shoppingCart{
+    width: 100%;
+    background-color: rgb(230,230,230);
+    padding: 20px;
+}
+
+#shoppingCart h1{
+    text-align: center;
+}
+
+#shoppingCart img{
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    padding: 10px;
+}
+
+#shoppingCart .cart-list, .order-summary{
+    border: 1px solid rgb(255, 0, 0);
+    padding: 10px;
+}*/

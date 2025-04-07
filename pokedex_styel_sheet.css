@@ -1,9 +1,13 @@
+/*-----------------POKEDEX STYLE SHEET-----------------*/
+
+/*Body*/
 body{
     background-color: rgb(60, 90, 166);
     margin: 0;
     padding: 0;
 }
 
+/*Navbar y botones*/
 .navbar-main-nav .navbar-brand{
     font-size: 16pt;
 }
@@ -32,51 +36,35 @@ body{
     color: white;
 }
 
-.see-more-button, .save-product, .add-to-cart{
-    background-color: rgb(20, 20, 20);
-    border-color: rgb(80, 80, 80);
-    color: white;
-}
-
-.see-more-button:hover{
-    background-color: rgb(255, 193, 7);
-    border-color: rgb(20, 20, 20);
-    color: rgb(20, 20, 20);
-}
-
-.save-product:hover{
-    background-color: rgb(255, 0, 0);
-    border-color: rgb(20, 20, 20);
-    color: white;
-}
-
-.add-to-cart:hover{
-    background-color: rgb(42, 117, 187);
-    border-color: rgb(20, 20, 20);
-    color: white;
-}
-
+/*Separador*/
 hr{
     border: 2px solid rgb(10,10,10);
 }
 
-.products-section-title{
-    padding: 5px;
-    color: white;
+/*Pokedex section y cards*/
+.pokeStoreTitle{
+    background-color: rgb(230, 230, 230);
 }
 
-.products-section .row{
+.pokeStoreTitle h1{
+    padding: 5px;
+    color: rgb(40, 40, 40);
+}
+
+#pokedexCatalogue{
+    background-color: rgb(40, 40, 40);
     padding: 5px;
 }
 
 .card{
-    border: 1px solid rgb(40, 40, 40);
-    background-color: rgb(40, 40, 40);
+    border: 2px solid rgb(255, 193, 7);
+    background-color: white;
+    max-width: 250px;
 }
 
 .card-title{
     height: 25px;
-    color: white;
+    color: rgb(40, 40, 40);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -86,10 +74,10 @@ hr{
 }
 
 .card-text{
-    height: 75px;
+    height: 25px;
     display: -webkit-box;
-    color: white;
-    -webkit-line-clamp: 3;
+    color: rgb(40, 40, 40);
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -98,14 +86,17 @@ hr{
 }
 
 .card-img-top{
-    height: 200px;
+    max-height: 150px;
     background-color: white;
-    object-fit:cover;
-    border-bottom: 1px solid rgb(40, 40, 40);
+    object-fit:contain;
 }
 
 .card-buttons{
     padding-top: 10px;
+}
+
+#pokedexPagination{
+    background-color: rgb(40, 40, 40);
 }
 
 .page-navigation{
@@ -114,12 +105,33 @@ hr{
 
 .page-navigation .page-link{
     background-color: rgb(40, 40, 40);
-    border-color: rgb(40, 40, 40);
+    border-color: rgb(230, 230, 230);
     color: white;
 }
 
 .page-navigation .page-link:hover{
     background-color: white;
+    color: rgb(40, 40, 40);
+}
+
+.pokedex-pagination{
+    padding: 10px;
+}
+
+.pokedex-pagination .page-link{
+    background-color: rgb(40, 40, 40);
+    border-color: rgb(230, 230, 230);
+    color: white;
+}
+
+.pokedex-pagination .page-link:hover{
+    background-color: white;
+    color: rgb(40, 40, 40);
+}
+
+.page-item.active .page-link{
+    background-color: rgb(255, 193, 7);
+    border-color: rgb(255, 193, 7);
     color: rgb(40, 40, 40);
 }
 

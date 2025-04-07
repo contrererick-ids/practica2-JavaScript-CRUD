@@ -1,6 +1,6 @@
 import Pokemon from './pokemon.js';
 
-const pokedex = document.getElementById("pokedex");
+const pokedex = document.getElementById("pokedexCatalogue");
 const pokedexPagination = document.getElementById("pokedexPagination");
 const paginationContainer = document.createElement("nav");
 paginationContainer.classList.add("pokedex-pagination");
@@ -10,7 +10,7 @@ paginationContainer.appendChild(paginationList);
 pokedexPagination.appendChild(paginationContainer);
 
 let currentPage = 1;
-const limit = 15;
+const limit = 18;
 let totalPages = 0;
 
 async function loadPokedexPage(page) {

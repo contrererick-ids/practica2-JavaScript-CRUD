@@ -1,3 +1,5 @@
+import Pokemon from './pokemon.js';
+
 const pokedex = document.getElementById("pokedexCatalogue");
 const pokedexPagination = document.getElementById("pokedexPagination");
 const paginationContainer = document.createElement("nav");

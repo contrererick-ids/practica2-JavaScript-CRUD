@@ -1,9 +1,13 @@
+/*-----------------MAIN STYLE SHEET-----------------*/
+
+/*Body*/
 body{
     background-color: rgb(60, 90, 166);
     margin: 0;
     padding: 0;
 }
 
+/*Navbar y botones*/
 .navbar-main-nav .navbar-brand{
     font-size: 16pt;
 }
@@ -56,10 +60,12 @@ body{
     color: white;
 }
 
+/*Separador*/
 hr{
     border: 2px solid rgb(10,10,10);
 }
 
+/*Product section y cards*/
 .products-section-title{
     padding: 5px;
     color: white;
@@ -108,6 +114,7 @@ hr{
     padding-top: 10px;
 }
 
+/*Paginación*/
 .page-navigation{
     padding: 10px;
 }
@@ -123,6 +130,7 @@ hr{
     color: rgb(40, 40, 40);
 }
 
+/*Footer*/
 .footer{
     background-color: rgb(30, 30, 30);
     padding: 10px;
@@ -145,6 +153,7 @@ hr{
     color: rgb(255, 0, 0);
 }
 
+/*Modal y formularios*/
 .loginForm .checkbox{
     padding: 10px;
 }
@@ -182,26 +191,4 @@ hr{
     background-color: rgb(30, 30, 30);
     border-color: rgb(255, 0, 0);
     color: rgb(255, 0, 0);
-}
-
-#shoppingCart{
-    width: 100%;
-    background-color: rgb(230,230,230);
-    padding: 20px;
-}
-
-#shoppingCart h1{
-    text-align: center;
-}
-
-#shoppingCart img{
-    width: 200px;
-    height: 150px;
-    object-fit: cover;
-    padding: 10px;
-}
-
-#shoppingCart .cart-list, .order-summary{
-    border: 1px solid rgb(255, 0, 0);
-    padding: 10px;
 }

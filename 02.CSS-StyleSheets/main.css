@@ -89,20 +89,32 @@ hr{
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
     padding: 0px;
     margin: 0px;
 }
 
 .card-text{
-    height: 75px;
+    height: 80px;
+    width: 60%;
     display: -webkit-box;
     color: white;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-align: left;
     text-overflow: ellipsis;
-    padding: 0px;
-    margin: 0px;
+    padding: 10px;
+    margin: 0;
+}
+
+.card-product-price{
+    width: 40%;
+    padding: 5px;
+    margin: auto;
+    text-align: center;
+    color: white;
+    font-size: 14pt;
 }
 
 .card-img-top{

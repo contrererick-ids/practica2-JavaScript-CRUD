@@ -1,0 +1,41 @@
+[{
+    "id": 0001,
+    "name": "Maison Margiela Future Low",
+    "price": 25000,
+    "description": "La Maison Margiela Future Low es una opción perfecta para aquellos que buscan un estilo urbano y moderno.",
+    "image": "https://i.pinimg.com/736x/29/f8/8e/29f88ea8c3892544c46d4e7b16f14be5.jpg",
+    "quantity": 1
+},
+{
+    "id": 0002,
+    "name": "Forum Buckle Low Bad Bunny Blue Tint",
+    "price": 25000,
+    "description": "Al igual que la variante Café, la característica más destacada de esta zapatilla es la hebilla del tobillo que cruza la lengüeta.",
+    "image": "https://yasstore.in/wp-content/uploads/2023/08/WhatsApp-Image-2023-07-29-at-10.38.47-AM.jpeg",
+    "quantity": 1
+},
+{
+    "id": 0003,
+    "name": "Jordan IV x Travis Scott 'Cactus Jack'",
+    "price": 25000,
+    "description": "La Jordan IV x Travis Scott 'Cactus Jack' es una colaboración única que combina la elegancia de la marca con el estilo del rapero.",
+    "image": "https://i.pinimg.com/736x/07/b2/ae/07b2aed07dac22353e4db80e48755857.jpg",
+    "quantity": 1
+},
+{
+    "id": 0004,
+    "name": "Balenciaga Triple S",
+    "price": 25000,
+    "description": "Encuentra la combinación ideal entre comfort y elegancia con los Balenciaga Triple S en color beige.",
+    "image": "https://cdn.pixabay.com/photo/2021/02/11/17/44/balenciaga-6005971_1280.jpg",
+    "quantity": 1
+},
+{
+    "id": 0005,
+    "name": "Yeezy Boost 350 Pirate Black",
+    "price": 25000,
+    "description": "La Yeezy Boost 350 V2 'Zebra' es una opción",
+    "image": "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fwp-content%2Fblogs.dir%2F6%2Ffiles%2F2019%2F11%2Fadidas-yeezy-boost-350-v2-pirate-reissue-release-black-friday-s.jpg?w=1080&cbr=1&q=90&fit=max",
+    "quantity": 1
+}
+]

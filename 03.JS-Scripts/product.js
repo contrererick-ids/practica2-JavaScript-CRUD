@@ -1,8 +1,8 @@
 //Definición de la URL de la API
-const URL = '../04.JSON-LocalStorage/products.json';
+export const URL = '../04.JSON-LocalStorage/products.json';
 
 // Definimos una variabale que apunta a "productsCatalogue" dónde se cargarán los productos en el index.html
-const productsCatalogue = document.getElementById("productsCatalogue");
+export const productsCatalogue = document.getElementById("productsCatalogue");
 
 // Función para cargar los productos en el contenedor "productsCatalogue" usando el método renderCard() de la clase Product
 async function loadProducts() {

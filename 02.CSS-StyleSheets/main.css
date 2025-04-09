@@ -8,8 +8,18 @@ body{
 }
 
 /*Navbar y botones*/
-.navbar-main-nav .navbar-brand{
+.navbar-main-nav{
     font-size: 16pt;
+}
+
+.navbar-elements > *{
+    margin: 5px;
+}
+
+.page-title{
+    text-align: center;
+    color: white;
+    font-size: 20pt;
 }
 
 .search-bar-button{
@@ -65,10 +75,15 @@ hr{
     border: 2px solid rgb(10,10,10);
 }
 
+.products-section{
+    padding: 25px;
+}
+
 /*Product section y cards*/
 .products-section-title{
-    padding: 5px;
+    padding: 10px;
     color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .products-section .products-section-grid{
@@ -156,7 +171,7 @@ hr{
 }
 
 .footer img{
-    border: 1px solid rgb(255, 0, 0);
+    border: 1px solid rgb(42, 117, 187);
 }
 
 .footer a{

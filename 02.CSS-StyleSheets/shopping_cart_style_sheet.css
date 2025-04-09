@@ -8,10 +8,19 @@ body{
 }
 
 /*Navbar y botones*/
-.navbar-main-nav .navbar-brand{
+.navbar-main-nav{
     font-size: 16pt;
 }
 
+.navbar-elements > *{
+    margin: 5px;
+}
+
+.page-title{
+    text-align: center;
+    color: white;
+    font-size: 20pt;
+}
 .search-bar-button{
     background-color: rgb(40, 40, 40);
     border-color: rgb(255, 193, 7);
@@ -68,7 +77,7 @@ hr{
 }
 
 .footer img{
-    border: 1px solid rgb(255, 0, 0);
+    border: 1px solid rgb(42, 117, 187);
 }
 
 .footer a{

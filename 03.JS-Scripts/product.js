@@ -26,6 +26,9 @@ async function loadProducts() {
     }
 }
 
+// Exportamos también nuestra función loadProducts() para poder usarla en otros archivos
+export { loadProducts };
+
 // Definición de la clase Product
 export default class Product {
     // Constructor de la clase Product
@@ -65,5 +68,3 @@ export default class Product {
         return card;
     }
 }
-
-loadProducts();

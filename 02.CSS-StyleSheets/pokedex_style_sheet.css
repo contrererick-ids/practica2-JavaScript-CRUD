@@ -8,8 +8,18 @@ body{
 }
 
 /*Navbar y botones*/
-.navbar-main-nav .navbar-brand{
+.navbar-main-nav{
     font-size: 16pt;
+}
+
+.navbar-elements > *{
+    margin: 5px;
+}
+
+.page-title{
+    text-align: center;
+    color: white;
+    font-size: 20pt;
 }
 
 .search-bar-button{
@@ -57,7 +67,7 @@ hr{
 }
 
 .card{
-    border: 2px solid rgb(255, 193, 7);
+    border: 1px solid rgb(230, 230, 230);
     background-color: rgb(40, 40, 40);
     max-width: 250px;
 }
@@ -87,7 +97,7 @@ hr{
 
 .card-img-top{
     max-height: 150px;
-    background-color: rgb(221, 238, 255);
+    background-color: rgb(40, 40, 40);
     object-fit:contain;
 }
 
@@ -138,7 +148,7 @@ hr{
 }
 
 .footer img{
-    border: 1px solid rgb(255, 0, 0);
+    border: 1px solid rgb(42, 117, 187);
 }
 
 .footer a{

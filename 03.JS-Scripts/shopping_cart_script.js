@@ -38,22 +38,25 @@ export { loadShoppingCart };
 
 // Función para añadir un producto al carrito de compras
 function addToCart(product) {
-    // Obtenemos el carrito de compras del localStorage
-    const shoppingCartLocalStorage = localStorage.getItem('shoppingCartLocalStorage');
-    // Si no existe el carrito en localStorage, lo creamos con un array vacío
-    shoppingCartLocalStorage = shoppingCartLocalStorage ? JSON.parse(shoppingCartLocalStorage) : [];
-
-    // Validamos si el producto ya existe en el carrito de compras
-    const existingProduct = shoppingCartLocalStorage.find(item => item.id === product.id);
-
+    let cartItems = JSON.parse(localStorage.getItem('shoppingCartLocalStorage') || '[]');
+    
+    const existingProduct = cartItems.find(item => item.id === product.id);
+    
     if (existingProduct) {
-        existingProduct.quantity += 1;  
+        existingProduct.quantity += 1;
     } else {
-        shoppingCartLocalStorage.push({product, quantity: 1});
+        // Asegurarnos de que el producto tenga todas las propiedades necesarias
+        cartItems.push({
+            id: product.id,
+            name: product.name,
+            image: product.image,
+            price: product.price,
+            description: product.description,
+            quantity: 1
+        });
     }
-
-    // Guardamos el carrito de compras en localStorage
-    localStorage.setItem('shoppingCartLocalStorage', JSON.stringify(shoppingCartLocalStorage));
+    
+    localStorage.setItem('shoppingCartLocalStorage', JSON.stringify(cartItems));
     alert('Producto añadido al carrito');
 }
 
@@ -92,35 +95,53 @@ export class cartItem {
 
 // Esperamos a que el DOM esté cargado
 document.addEventListener('DOMContentLoaded', () => {
+    // Cargar el carrito si estamos en la página del carrito
     if (shoppingCartGrid) {
         loadShoppingCart();
-    } else {
-        console.error('Shopping cart grid element not found');
     }
 
+    // Agregar event listeners a los botones de "Agregar al carrito"
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
+    
     addToCartButtons.forEach(button => {
         button.addEventListener('click', (event) => {
+            console.log('Click sobre el botón "Agregar al carrito"'); // Para debugging
+            // Encontrar la tarjeta del producto más cercana al botón
             const productCard = event.target.closest('.product-card');
-            if(!productCard) return;
+            console.log('Tarjeta del producto:', productCard); // Para debugging
+            if (!productCard) {
+                console.error('No se encontró la tarjeta del producto');
+                return;
+            }
             
+            // Obtener el ID del producto
             const productId = parseInt(productCard.dataset.productId);
-            if(!productId) return;
+            console.log('ID del producto:', productId); // Para debugging
+            if (!productId) {
+                console.error('ID de producto no válido');
+                return;
+            }
 
+            // Obtener los datos del producto desde la API
             fetch(prodcutModule.api.baseURL)
-                .then(response => response.json())
-                .then(products =>{
-                    const product = products.find(product => product.id === productId);
-                    if(product){
+                .then(response => {
+                    if (!response.ok) throw new Error('Error en la respuesta de la API');
+                    return response.json();
+                })
+                .then(products => {
+                    const product = products.find(p => p.id === productId);
+                    if (product) {
                         addToCart(product);
+                    } else {
+                        throw new Error('Producto no encontrado');
                     }
                 })
                 .catch(error => {
-                   console.error('Error al obtener los productos', error); 
-                })
-        }); 
-    })
+                    console.error('Error al agregar al carrito:', error);
+                    alert('No se pudo agregar el producto al carrito');
+                });
+        });
+    });
 });
 
 export { addToCart };

@@ -1,29 +1,31 @@
 import Pokemon from './pokemon.js';
 import * as productModule from './product.js';
+import { addToCart } from './shopping_cart_script.js';
 
-// Llamamos a la función loadProducts() cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-    try {
-        productModule.loadProducts();
-    } catch (error) {
-        console.error('Error loading products:', error);
-    }
+    productModule.loadProducts();
 
+    // Agregar event listeners a los botones de "Agregar al carrito"
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
+    console.log(addToCartButtons); // Agrega esta línea para verificar si se están obteniendo los botones correctamente
+    
     addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (event) => {
             const productCard = event.target.closest('.product-card');
-            const productId = parseInt(productCard.dataset.productId);
+            if (!productCard) return;
             
-            fetch(prodcutModule.api.baseURL)
+            const productId = parseInt(productCard.dataset.productId);
+            if (!productId) return;
+
+            fetch(productModule.api.baseURL)
                 .then(response => response.json())
-                .then(products =>{
-                    const product = products.find(product => product.id === productId);
-                    if(product){
+                .then(products => {
+                    const product = products.find(p => p.id === productId);
+                    if (product) {
                         addToCart(product);
                     }
                 })
-        }); 
-    })
+                .catch(error => console.error('Error al agregar al carrito:', error));
+        });
+    });
 });

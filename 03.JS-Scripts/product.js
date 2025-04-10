@@ -96,20 +96,18 @@ export default class Product {
         card.classList.add("col");
 
         card.innerHTML = `
-            <div class="col">
-                <div class="card product-card" data-product-id="${this.id}">
-                    <img src="${this.image}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${this.name}</h5>
-                        <div class="card-product-info row justify-content-between">
-                            <p class="card-text">${this.description}</p>
-                            <p class="card-product-price">$${this.price} MXN</p>
-                        </div>
-                        <div class="d-flex justify-content-evenly card-buttons">
-                            <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
-                            <button class="btn btn-primary save-product"><i class="bi bi-heart"></i></button>
-                            <button class="btn btn-primary add-to-cart"><i class="bi bi-cart-plus"></i></button>
-                        </div>
+            <div class="card product-card" data-product-id="${this.id}">
+                <img src="${this.image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${this.name}</h5>
+                    <div class="card-product-info row justify-content-between">
+                        <p class="card-text">${this.description}</p>
+                        <p class="card-product-price">$${this.price} MXN</p>
+                    </div>
+                    <div class="d-flex justify-content-evenly card-buttons">
+                        <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                        <button class="btn btn-primary save-product"><i class="bi bi-heart"></i></button>
+                        <button class="btn btn-primary add-to-cart"><i class="bi bi-cart-plus"></i></button>
                     </div>
                 </div>
             </div> 

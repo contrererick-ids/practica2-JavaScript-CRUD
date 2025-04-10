@@ -103,7 +103,7 @@ export default class Product {
                         <h5 class="card-title">${this.name}</h5>
                         <div class="card-product-info row justify-content-between">
                             <p class="card-text">${this.description}</p>
-                            <p class="card-product-price">${this.price," MXN"}</p>
+                            <p class="card-product-price">$${this.price} MXN</p>
                         </div>
                         <div class="d-flex justify-content-evenly card-buttons">
                             <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>

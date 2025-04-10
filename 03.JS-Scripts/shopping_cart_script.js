@@ -43,13 +43,7 @@ function addToCart(product) {
     // Si no existe el carrito en localStorage, lo creamos con un array vacío
     shoppingCartLocalStorage = shoppingCartLocalStorage ? JSON.parse(shoppingCartLocalStorage) : [];
 
-    // Validamos primero si existe el carrito en localStorage
-    if (!shoppingCartLocalStorage || JSON.parse(shoppingCartLocalStorage).length === 0) {
-        shoppingCartLocalStorage = '[]';
-    }
-
-    shoppingCartLocalStorage = JSON.parse(shoppingCartLocalStorage);
-
+    // Validamos si el producto ya existe en el carrito de compras
     const existingProduct = shoppingCartLocalStorage.find(item => item.id === product.id);
 
     if (existingProduct) {
@@ -58,6 +52,7 @@ function addToCart(product) {
         shoppingCartLocalStorage.push({product, quantity: 1});
     }
 
+    // Guardamos el carrito de compras en localStorage
     localStorage.setItem('shoppingCartLocalStorage', JSON.stringify(shoppingCartLocalStorage));
     alert('Producto añadido al carrito');
 }
@@ -106,10 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
 
     addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (event) => {
             const productCard = event.target.closest('.product-card');
-            const productId = parseInt(productCard.dataset.productId);
+            if(!productCard) return;
             
+            const productId = parseInt(productCard.dataset.productId);
+            if(!productId) return;
+
             fetch(prodcutModule.api.baseURL)
                 .then(response => response.json())
                 .then(products =>{
@@ -118,6 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         addToCart(product);
                     }
                 })
+                .catch(error => {
+                   console.error('Error al obtener los productos', error); 
+                })
         }); 
     })
 });
+
+export { addToCart };

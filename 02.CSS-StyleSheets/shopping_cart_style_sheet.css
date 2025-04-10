@@ -51,6 +51,11 @@ hr{
 }
 
 /*Shopping cart*/
+#shoppingCartGrid{
+    padding: 5px;
+    text-align: center;
+}
+
 .shoppingCartTitle{
     background-color: white;
 }
@@ -63,6 +68,28 @@ hr{
 .shoppingCartGrid{
     padding: 5px;
     background-color: whte;
+}
+
+.emptyCart{
+    padding: 15px;
+}
+
+.emptyCart h2{
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.back-to-catalogue-btn{
+    margin-top: 20px;
+    background-color: rgb(40, 40, 40);
+    border-color: rgb(255, 193, 7);
+    color: rgb(255, 193, 7);
+}
+
+.back-to-catalogue-btn:hover{
+    background-color: rgb(255, 193, 7);
+    border-color: rgb(255, 193, 7);
+    color: rgb(40, 40, 40);
 }
 
 /*Footer*/

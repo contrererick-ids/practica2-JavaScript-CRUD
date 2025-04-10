@@ -1,5 +1,56 @@
-//Definición de la URL de la API
-export const URL = '../04.JSON-LocalStorage/products.json';
+//Definición de la API
+export class API {
+    constructor() {
+        this.baseURL = "../04.JSON-LocalStorage/products.json"; // URL base de la API
+    }
+
+    async getAll() {
+        try {
+            const response = await fetch(this.baseURL);
+            if (!response.ok) throw new Error('Error al obtener datos');
+            return response.json();
+        } catch (error) {
+            console.error("Error en getAll:", error);
+            return [];
+        }
+    }
+
+    async create(data) {
+        try {
+            const response = await fetch(this.baseURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            return response.json();
+        } catch (error) {
+            console.error("Error en create:", error);
+        }
+    }
+
+    async update(id, data) {
+        try {
+            const response = await fetch(`${this.baseURL}/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            return response.json();
+        } catch (error) {
+            console.error("Error en update:", error);
+        }
+    }
+
+    async delete(id) {
+        try {
+            await fetch(`${this.baseURL}/${id}`, { method: 'DELETE' });
+        } catch (error) {
+            console.error("Error delete:", error);
+        }
+    }
+}
+// Exportamos la clase API para poder usarla en otros archivos
+export const api = new API();
 
 // Definimos una variabale que apunta a "productsCatalogue" dónde se cargarán los productos en el index.html
 export const productsCatalogue = document.getElementById("productsCatalogue");
@@ -11,8 +62,7 @@ async function loadProducts() {
     
     // Hacemos un request a la API
     try {
-        const response = await fetch(URL);
-        const data = await response.json();
+        const data = await api.getAll();
         
         // Recorremos los productos de data y los cargamos en el contenedor con renderCard()
         for (const product of data) {
@@ -47,7 +97,7 @@ export default class Product {
 
         card.innerHTML = `
             <div class="col">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="${this.id}">
                     <img src="${this.image}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">${this.name}</h5>

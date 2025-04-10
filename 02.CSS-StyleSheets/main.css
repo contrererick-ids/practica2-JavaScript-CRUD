@@ -9,7 +9,7 @@ body{
 
 /*Navbar y botones*/
 .navbar-main-nav{
-    font-size: 16pt;
+    font-size: 14pt;
 }
 
 .navbar-elements > *{
@@ -46,6 +46,7 @@ body{
     color: white;
 }
 
+/* Botones de productos */
 .see-more-button, .save-product, .add-to-cart{
     background-color: rgb(20, 20, 20);
     border-color: rgb(80, 80, 80);

@@ -1,6 +1,6 @@
 import Pokemon from './pokemon.js';
-import * as productModule from './03.JS-Scripts/product.js';
-import { addToCart } from './03.JS-Scripts/shopping_cart_script.js';
+import * as productModule from '../03.JS-Scripts/product.js';
+import { addToCart } from '../03.JS-Scripts/shopping_cart_script.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     productModule.loadProducts();

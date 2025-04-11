@@ -1,7 +1,7 @@
 //Definición de la API
 export class API {
     constructor() {
-        this.baseURL = '/04.JSON-LocalStorage/products.json'; // URL base de la API
+        this.baseURL = '../practica2-JavaScript-CRUD/04.JSON-LocalStorage/products.json'; // URL base de la API
     }
 
     async getAll() {
@@ -49,14 +49,11 @@ export class API {
         }
     }
 }
-// Exportamos la clase API para poder usarla en otros archivos
+// Exportamos una variable "api" que contiene una instancia de la clase API para poder usarla en otros archivos
 export const api = new API();
 
-// Definimos una variabale que apunta a "productsCatalogue" dónde se cargarán los productos en el index.html
-export const productsCatalogue = document.getElementById("productsCatalogue");
-
 // Función para cargar los productos en el contenedor "productsCatalogue" usando el método renderCard() de la clase Product
-async function loadProducts() {
+async function loadProducts(productsCatalogue) {
     // Limpiamos el contenedor de productos para asegurarnos que no se dupliquen los productos al cargar la página de nuevo
     productsCatalogue.innerHTML = "";
     
@@ -75,7 +72,6 @@ async function loadProducts() {
         console.error("Error in loadProducts: ", error);
     }
 }
-
 // Exportamos también nuestra función loadProducts() para poder usarla en otros archivos
 export { loadProducts };
 

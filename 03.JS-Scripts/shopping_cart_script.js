@@ -1,4 +1,4 @@
-import * as prodcutModule from './product.js';
+import * as prodcutModule from './03.JS-Scripts/product.js';
 
 // Definimos una variable que apunta a "shoppingCartGrid" dónde se cargarán los productos del carrito de compras en el shoppingCart.html
 const shoppingCartGrid = document.getElementById('shoppingCartGrid');

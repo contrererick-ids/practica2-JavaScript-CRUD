@@ -60,6 +60,9 @@ function addToCart(product) {
     alert('Producto añadido al carrito');
 }
 
+// Exportamos la función addToCart para poder ser utilizada en otros archivos de la aplicación
+export { addToCart };
+
 export class cartItem {
     constructor({ id, name, image, description, price, quantity }) {
         this.id = id;
@@ -143,5 +146,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
-export { addToCart };

@@ -1,7 +1,7 @@
 //Definición de la API
 export class API {
     constructor() {
-        this.baseURL = './04.JSON-LocalStorage/products.json'; // URL base de la API
+        this.baseURL = '../04.JSON-LocalStorage/products.json'; // URL base de la API
     }
 
     async getAll() {

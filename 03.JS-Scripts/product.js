@@ -1,7 +1,13 @@
 //Definición de la API
 export class API {
     constructor() {
-        this.baseURL = '../practica2-JavaScript-CRUD/04.JSON-LocalStorage/products.json'; // URL base de la API
+        // Validamos que el dominio de la página actual incluya "github.io" para determinar si estamos en GitHub Pages o en un entorno local
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        
+        // Definimos la URL a utilizar para la API dependiendo si estamos en GitHub Pages o en un entorno local
+        this.baseURL = isGitHubPages 
+            ? '/practica2-JavaScript-CRUD/04.JSON-LocalStorage/products.json'
+            : '../04.JSON-LocalStorage/products.json';
     }
 
     async getAll() {

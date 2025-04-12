@@ -1,10 +1,32 @@
 import Pokemon from './pokemon.js';
-import * as productModule from '../03.JS-Scripts/product.js';
-import * as shoppingCartModule from '../03.JS-Scripts/shopping_cart_script.js';
+import * as productModule from './product.js';
+import * as shoppingCartModule from './shopping_cart_script.js';
 
-// Definimos una variabale que apunta a "productsCatalogue" dónde se cargarán los productos en el index.html
-export const productsCatalogue = document.getElementById("productsCatalogue");
+document.addEventListener('DOMContentLoaded', async () => {
+    // Load products and wait for them to finish loading
+    await productModule.loadProducts(productsCatalogue);
 
-document.addEventListener('DOMContentLoaded', () => {
-    productModule.loadProducts(productsCatalogue);
+    // Now that products are loaded, we can get the buttons
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    console.log('Buttons found:', addToCartButtons); // Debug log
+    
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productCard = event.target.closest('.product-card');
+            if (!productCard) return;
+            
+            const productId = parseInt(productCard.dataset.productId);
+            if (!productId) return;
+
+            fetch(productModule.api.baseURL)
+                .then(response => response.json())
+                .then(products => {
+                    const product = products.find(p => p.id === productId);
+                    if (product) {
+                        shoppingCartModule.addToCart(product);
+                    }
+                })
+                .catch(error => console.error('Error adding to cart:', error));
+        });
+    });
 });

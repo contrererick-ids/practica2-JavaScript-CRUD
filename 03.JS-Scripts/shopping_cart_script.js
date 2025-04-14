@@ -93,6 +93,12 @@ function displayEmptyCartMessage() {
             <button class="btn btn-primary back-to-catalogue-btn"><i class="bi bi-cart"></i></button>
         </div>
     `;
+
+    // Guardamos el botón para regresar a la página de productos en una variable
+    const backToCatalogueButton = shoppingCartGrid.querySelector('.back-to-catalogue-btn');
+    // Agregamos un EventListener al botón para que el botón mande a llamar la función para regresar a la página de productos
+    backToCatalogueButton.addEventListener('click', goBackToCatalogue);
+
 }
 
 // Función para agregar un producto al carrito de compras
@@ -142,6 +148,15 @@ function removeFromCart(productId) {
         // En caso de que haya un error al remover el producto del carrito, mostramos un mensaje de error en la consola
         console.error('Error removing item from cart:', error);
     }
+}
+
+//Función para regresar a la página de productos cuando el carritoe está vacío
+function goBackToCatalogue() {
+    // Primero validamos el dominio en el que estamos para definir el path a utilizar
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    const path = isGitHubPages ? '/practica2-JavaScript-CRUD/' : '/';
+    // Window location href nos permite redireccionar a la página que le asignemos (tiene que ser un path válido)
+    window.location.href = path + 'index.html';
 }
 
 document.addEventListener('DOMContentLoaded', () => {

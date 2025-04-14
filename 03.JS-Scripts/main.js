@@ -3,30 +3,35 @@ import * as productModule from './product.js';
 import * as shoppingCartModule from './shopping_cart_script.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Esperamos a que productModule.loadProducts() se complete antes de continuar
+    const productsCatalogue = document.getElementById('productsCatalogue');
+    if (!productsCatalogue) return;
+
+    // Esperamos a que productModule.loadProducts() se complete
     await productModule.loadProducts(productsCatalogue);
 
-    // Cargamos los botones ya que los productos están renderizados
+    // Agregamos los event listeners a los botones
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    console.log('Buttons found:', addToCartButtons); // Debug log
+    console.log('Buttons found:', addToCartButtons.length);
     
     addToCartButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            const productCard = event.target.closest('.product-card');
-            if (!productCard) return;
-            
-            const productId = parseInt(productCard.dataset.productId);
-            if (!productId) return;
+        button.addEventListener('click', async (event) => {
+            try {
+                const productCard = event.target.closest('.product-card');
+                if (!productCard) return;
+                
+                const productId = parseInt(productCard.dataset.productId);
+                if (!productId) return;
 
-            fetch(productModule.api.baseURL)
-                .then(response => response.json())
-                .then(products => {
-                    const product = products.find(p => p.id === productId);
-                    if (product) {
-                        shoppingCartModule.addToCart(product);
-                    }
-                })
-                .catch(error => console.error('Error adding to cart:', error));
+                const response = await fetch(productModule.api.baseURL);
+                const products = await response.json();
+                const product = products.find(p => p.id === productId);
+                
+                if (product) {
+                    shoppingCartModule.addToCart(product);
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+            }
         });
     });
 });

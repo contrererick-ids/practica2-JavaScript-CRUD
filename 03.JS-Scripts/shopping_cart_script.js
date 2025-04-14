@@ -164,46 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (shoppingCartGrid) {
         loadShoppingCart();
     }
-
-    // Guardamos los botones para agregar productos al carrito en una variable
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    
-    // Agregamos un EventListener a cada botón para que los estos manden a llamar la función para agregar al carrito al momento de hacer click
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', async (event) => {
-            try {
-                // Guardamos el contenedor de la tarjeta del producto en una variable
-                const productCard = event.target.closest('.product-card');
-                if (!productCard) {
-                    // Si no encotnramos el contenedor de la tarjeta del producto, lanzamos un error para que se muestre en pantalla
-                    throw new Error('Product card not found');
-                }
-                
-                // Guardamos el ID de la tarjeta del producto en una variable, si no existe, lanzamos un error para que se muestre en pantalla
-                const productId = parseInt(productCard.dataset.productId);
-                if (!productId) {
-                    throw new Error('Invalid product ID');
-                }
-
-                // Hacemos un request a la API para obtener los productos y buscamos el producto con el ID especificado
-                const response = await fetch(productModule.api.baseURL);
-                const products = await response.json();
-                const productToAdd = products.find(p => p.id === productId);
-                
-                // Si encontramos el producto, lo agregamos al carrito mandando el producto guardado en productToAdd como parámetro a la función addToCart
-                if (productToAdd) {
-                    addToCart(productToAdd);
-                } else {
-                    // Si no encontramos el producto, lanzamos un error para que se muestre en pantalla
-                    throw new Error('Product not found');
-                }
-            } catch (error) {
-                // En caso de que haya un error en el proceso de agregar al carrito, mostramos un mensaje de error en la consola
-                console.error('Error in add to cart process:', error);
-                alert('No se pudo agregar el producto al carrito');
-            }
-        });
-    });
 });
 
 // Exportamos las funciones para que puedan ser utilizadas en otros archivos

@@ -1,69 +1,7 @@
-import * as prodcutModule from '../03.JS-Scripts/product.js';
+import * as productModule from '../03.JS-Scripts/product.js';
 
-// Definimos una variable que apunta a "shoppingCartGrid" dónde se cargarán los productos del carrito de compras en el shoppingCart.html
-const shoppingCartGrid = document.getElementById('shoppingCartGrid');
-
-// Función para cargar el carrito de compras
-async function loadShoppingCart() {
-    // Obtenemos el carrito de compras del localStorage
-    const shoppingCartLocalStorage = localStorage.getItem('shoppingCartLocalStorage');
-    // Validamos primero si existe el carrito en localStorage
-    if (!shoppingCartLocalStorage || JSON.parse(shoppingCartLocalStorage).length === 0) {
-        shoppingCartGrid.innerHTML = `
-        <div class="emptyCart">
-            <h2 class="emptyCartTitle">No hay nada aquí aún.</h2>
-            <h2>Encuéntrate con tu par ideal</h2>
-            <button class="btn btn-primary back-to-catalogue-btn"><i class="bi bi-cart"></i></button>
-        </div>
-        `;
-        return;
-    }
-
-    // Limpiamos el carrito de compras para asegurarnos que no se dupliquen los productos al cargar la página de nuevo
-    shoppingCartGrid.innerHTML = '';
-
-    // Convertimos el string en un objeto JSON para poder recorrerlo con el ciclo for
-    shoppingCartLocalStorage = JSON.parse(shoppingCartLocalStorage);
-    // Recorremos el carrito de compras
-    for (const product of shoppingCartLocalStorage) {
-        // Creamos un objeto Product con los datos del producto
-        const cartItem = new cartItem(product);
-        // Renderizamos el producto en el carrito de compras
-        shoppingCartGrid.appendChild(cartItem.renderItem());
-    }
-}
-
-// Exportamos la función loadShoppingCart para poder ser utilizada en otros archivos de la aplicación
-export { loadShoppingCart };
-
-// Función para añadir un producto al carrito de compras
-function addToCart(product) {
-    let cartItems = JSON.parse(localStorage.getItem('shoppingCartLocalStorage') || '[]');
-    
-    const existingProduct = cartItems.find(item => item.id === product.id);
-    
-    if (existingProduct) {
-        existingProduct.quantity += 1;
-    } else {
-        // Asegurarnos de que el producto tenga todas las propiedades necesarias
-        cartItems.push({
-            id: product.id,
-            name: product.name,
-            image: product.image,
-            price: product.price,
-            description: product.description,
-            quantity: 1
-        });
-    }
-    
-    localStorage.setItem('shoppingCartLocalStorage', JSON.stringify(cartItems));
-    alert('Producto añadido al carrito');
-}
-
-// Exportamos la función addToCart para poder ser utilizada en otros archivos de la aplicación
-export { addToCart };
-
-export class cartItem {
+// Definimos la clase ShoppingCartItem que representa un producto en el carrito de compras
+export class ShoppingCartItem {
     constructor({ id, name, image, description, price, quantity }) {
         this.id = id;
         this.name = name;
@@ -73,76 +11,185 @@ export class cartItem {
         this.quantity = quantity;
     } 
 
+    // Método para renderizar el producto en el carrito de compras
     renderItem() {
-        const cartItem = document.createElement('div');
-        cartItem.classList.add('container-fluid p-0 m-0','shoppingCartItems');
+        const cartItemContainer = document.createElement('div');
+        cartItemContainer.classList.add('container-fluid', 'p-0', 'm-0', 'shoppingCartItem');
 
-        cartItem.innerHTML = `
-            <div class="row">
-                <div class="col">
+        cartItemContainer.innerHTML = `
+            <div class="d-flex cart-item-banner">
+                <div class="col-6 cart-item-img">
                     <img src="${this.image}" class="card-img-top" alt="${this.name}">
                 </div>
-                <div class="d-block">
-                    <h5 class="card-title">${this.name}</h5>
-                    <p class="card-text">${this.description}</p>
-                    <p class="card-text">$${this.price}</p>
-                    <p class="card-text">Cantidad: ${this.quantity}</p>
-                    <button class="btn btn-primary" onclick="removeFromCart(${this.id})">Eliminar</button>
+                <div class="col-6 cart-item-body">
+                    <div class="cart-item-header">
+                        <h3 class="card-title">${this.name}</h3>
+                    </div>
+                    <div class="d-flex cart-item-info">
+                        <div class="col-8 cart-item-description">
+                            <p class="cart-item-text">${this.description}</p>
+                        </div>
+                        <div class="col-4 cart-item-subtotal">    
+                            <p class="cart-item-text">$${this.price}</p>
+                            <p class="cart-item-text">Cantidad: ${this.quantity}</p>
+                            <p class="cart-item-text">Subtotal: ${this.price * this.quantity}</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary decrease-quantity" data-product-id="${this.id}">+</button>
+                    <button class="btn btn-primary decrease-quantity" data-product-id="${this.id}">-</button>
+                    <button class="btn btn-primary remove-from-cart" data-product-id="${this.id}">Eliminar</button>
                 </div>
             </div>
         `;
 
-        return cartItem;
+        // Guardamos los botones para remover productos del carrito en una variable
+        const removeButton = cartItemContainer.querySelector('.remove-from-cart');
+        // Agregamos un EventListener a la variable para que los botones manden a llamar la función para remover
+        removeButton.addEventListener('click', () => removeFromCart(this.id));
+
+        // Regresamos el div del producto
+        return cartItemContainer;
     }
 }
 
-// Esperamos a que el DOM esté cargado
+// Definimos una variable que apunta a "shoppingCartGrid" dónde se cargarán los productos del carrito de compras en el shoppingCart.html
+const shoppingCartGrid = document.getElementById('shoppingCartGrid');
+
+// Función para cargar el carrito de compras
+async function loadShoppingCart() {
+    try {
+        // Definimos una variable que apunta al localStorage dónde se guardan los productos del carrito de compras en el shoppingCart.html
+        const savedCartData = localStorage.getItem('shoppingCartLocalStorage');
+        // Validamos si hay productos en el carrito de compras
+        const cartItems = JSON.parse(savedCartData || '[]');
+
+        // Si no hay productos en el carrito de compras, mostramos un mensaje de que el carrito está vacío
+        if (!cartItems || cartItems.length === 0) {
+            displayEmptyCartMessage();
+            return;
+        }
+
+        // Limpiamos el contenedor del carrito de compras para evitar que se dupliquen los productos al cargar la página de nuevo
+        shoppingCartGrid.innerHTML = '';
+        
+        // Recorremos los productos del carrito de compras y utilizamos el método renderItem en cada uno para agregarlo al contenedor del carrito de compras
+        cartItems.forEach(item => {
+            const cartItem = new ShoppingCartItem(item);
+            shoppingCartGrid.appendChild(cartItem.renderItem());
+        });
+    } catch (error) {
+        // En caso de que haya un error al cargar el carrito de compras, mostramos un mensaje de error en la consola
+        console.error('Error loading shopping cart:', error);
+        displayEmptyCartMessage();
+    }
+}
+
+// Función para mostrar un mensaje indicando que el carrito está vacío
+function displayEmptyCartMessage() {
+    shoppingCartGrid.innerHTML = `
+        <div class="emptyCart">
+            <h2 class="emptyCartTitle">No hay nada aquí aún.</h2>
+            <h2>Encuéntrate con tu par ideal</h2>
+            <button class="btn btn-primary back-to-catalogue-btn"><i class="bi bi-cart"></i></button>
+        </div>
+    `;
+}
+
+// Función para agregar un producto al carrito de compras
+function addToCart(product) {
+    try {
+        // Guardamos el carrito actual del localStorage en una variable, si no existe, asignamos un arreglo vacío
+        let currentCartItems = JSON.parse(localStorage.getItem('shoppingCartLocalStorage') || '[]');
+        // Verificamos si el producto ya existe en el carrito
+        const existingCartItem = currentCartItems.find(item => item.id === product.id);
+        
+        // Si ya existe el proudcto en el carrito, incrementamos su cantidad, si no, lo agregamos al carrito
+        if (existingCartItem) {
+            existingCartItem.quantity += 1;
+        } else {
+            currentCartItems.push({
+                id: product.id,
+                name: product.name,
+                image: product.image,
+                price: product.price,
+                description: product.description,
+                quantity: 1
+            });
+        }
+        
+        // Guardamos el carrito actualizado en el localStorage pasando el arreglo de productos como un string con JSON.stringify
+        localStorage.setItem('shoppingCartLocalStorage', JSON.stringify(currentCartItems));
+        alert('Producto añadido al carrito');
+    } catch (error) {
+        // En caso de que haya un error al agregar el producto al carrito, mostramos un mensaje de error en la consola
+        console.error('Error adding to cart:', error);
+        alert('Error al añadir el producto al carrito');
+    }
+}
+
+// Función para remover un producto del carrito de compras
+function removeFromCart(productId) {
+    try {
+        // Guardamos el carrito actual del localStorage en una variable, si no existe, asignamos un arreglo vacío
+        let currentCartItems = JSON.parse(localStorage.getItem('shoppingCartLocalStorage') || '[]');
+        // Filtramos el carrito actual para eliminar el producto con el ID especificado, esta línea devuelve el carrito actual sin el producto filtrado por ID
+        currentCartItems = currentCartItems.filter(item => item.id !== productId);
+        // Actualizamos el carrito en el localStorage con el carrito actualizado sin el producto filtrado
+        localStorage.setItem('shoppingCartLocalStorage', JSON.stringify(currentCartItems));
+        // Volvemos a cargar el carrito de compras
+        loadShoppingCart();
+    } catch (error) {
+        // En caso de que haya un error al remover el producto del carrito, mostramos un mensaje de error en la consola
+        console.error('Error removing item from cart:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Cargar el carrito si estamos en la página del carrito
     if (shoppingCartGrid) {
         loadShoppingCart();
     }
 
-    // Agregar event listeners a los botones de "Agregar al carrito"
+    // Guardamos los botones para agregar productos al carrito en una variable
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     
+    // Agregamos un EventListener a cada botón para que los estos manden a llamar la función para agregar al carrito al momento de hacer click
     addToCartButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            console.log('Click sobre el botón "Agregar al carrito"'); // Para debugging
-            // Encontrar la tarjeta del producto más cercana al botón
-            const productCard = event.target.closest('.product-card');
-            console.log('Tarjeta del producto:', productCard); // Para debugging
-            if (!productCard) {
-                console.error('No se encontró la tarjeta del producto');
-                return;
-            }
-            
-            // Obtener el ID del producto
-            const productId = parseInt(productCard.dataset.productId);
-            console.log('ID del producto:', productId); // Para debugging
-            if (!productId) {
-                console.error('ID de producto no válido');
-                return;
-            }
+        button.addEventListener('click', async (event) => {
+            try {
+                // Guardamos el contenedor de la tarjeta del producto en una variable
+                const productCard = event.target.closest('.product-card');
+                if (!productCard) {
+                    // Si no encotnramos el contenedor de la tarjeta del producto, lanzamos un error para que se muestre en pantalla
+                    throw new Error('Product card not found');
+                }
+                
+                // Guardamos el ID de la tarjeta del producto en una variable, si no existe, lanzamos un error para que se muestre en pantalla
+                const productId = parseInt(productCard.dataset.productId);
+                if (!productId) {
+                    throw new Error('Invalid product ID');
+                }
 
-            // Obtener los datos del producto desde la API
-            fetch(prodcutModule.api.baseURL)
-                .then(response => {
-                    if (!response.ok) throw new Error('Error en la respuesta de la API');
-                    return response.json();
-                })
-                .then(products => {
-                    const product = products.find(p => p.id === productId);
-                    if (product) {
-                        addToCart(product);
-                    } else {
-                        throw new Error('Producto no encontrado');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al agregar al carrito:', error);
-                    alert('No se pudo agregar el producto al carrito');
-                });
+                // Hacemos un request a la API para obtener los productos y buscamos el producto con el ID especificado
+                const response = await fetch(productModule.api.baseURL);
+                const products = await response.json();
+                const productToAdd = products.find(p => p.id === productId);
+                
+                // Si encontramos el producto, lo agregamos al carrito mandando el producto guardado en productToAdd como parámetro a la función addToCart
+                if (productToAdd) {
+                    addToCart(productToAdd);
+                } else {
+                    // Si no encontramos el producto, lanzamos un error para que se muestre en pantalla
+                    throw new Error('Product not found');
+                }
+            } catch (error) {
+                // En caso de que haya un error en el proceso de agregar al carrito, mostramos un mensaje de error en la consola
+                console.error('Error in add to cart process:', error);
+                alert('No se pudo agregar el producto al carrito');
+            }
         });
     });
 });
+
+// Exportamos las funciones para que puedan ser utilizadas en otros archivos
+export { loadShoppingCart, addToCart};

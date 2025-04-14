@@ -3,10 +3,10 @@ import * as productModule from './product.js';
 import * as shoppingCartModule from './shopping_cart_script.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Load products and wait for them to finish loading
+    // Esperamos a que productModule.loadProducts() se complete antes de continuar
     await productModule.loadProducts(productsCatalogue);
 
-    // Now that products are loaded, we can get the buttons
+    // Cargamos los botones ya que los productos están renderizados
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     console.log('Buttons found:', addToCartButtons); // Debug log
     

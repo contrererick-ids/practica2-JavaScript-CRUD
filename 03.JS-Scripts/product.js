@@ -9,7 +9,7 @@ export class API {
             ? '/practica2-JavaScript-CRUD/04.JSON-LocalStorage/products.json'
             : '../04.JSON-LocalStorage/products.json';
     }
-
+    
     async getAll() {
         try {
             const response = await fetch(this.baseURL);

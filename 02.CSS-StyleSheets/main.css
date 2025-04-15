@@ -2,7 +2,7 @@
 
 /*Body*/
 body{
-    background-color: rgb(60, 90, 166);
+    background-color: rgb(220, 220, 220);
     margin: 0;
     padding: 0;
 }
@@ -76,14 +76,36 @@ hr{
     border: 2px solid rgb(10,10,10);
 }
 
+/*Carrusel*/
+#productsCarousel{
+    background-color: rgb(40, 40, 40);
+}
+
+.carousel-inner{
+    margin: 0;
+    padding: 0;
+
+}
+
+.carousel-item{
+    height: 400px;
+    background-color: rgb(40, 40, 40);
+}
+
+.carousel-item img{
+    height: 100%;
+    object-fit: contain; 
+}
+
 .products-section{
     padding: 25px;
+    padding-top: 5px;
 }
 
 /*Product section y cards*/
 .products-section-title{
     padding: 10px;
-    color: white;
+    color: rgb(40, 40, 40);
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 

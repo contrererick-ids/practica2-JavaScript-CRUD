@@ -140,15 +140,46 @@ hr{
 }
 
 .cart-item-description{
+    padding: 5px;
     margin: 0;
+    border-right: 1px solid rgb(255, 193, 7);
 }
 
 .cart-item-subtotal{
+    padding: 5px;
     margin: 0;
+    border-left: 1px solid rgb(255, 193, 7);
+}
+
+table{
+    padding: 5px;
+    margin: 0;  
+    table-layout: fixed;
+    width: 100%;
+    overflow: hidden;
 }
 
 .cart-item-text{
     margin: 0;
+    justify-content: center;
+}
+
+.subtotal-table-row-text{
+    text-align: left;
+    font-weight: bold;
+}
+
+.subtotal-table-row-value{
+    text-align: right;
+}
+
+.btn{
+    padding: auto;
+    margin: 0;
+}
+
+.remove-from-cart{
+    margin-top: 5px;
 }
 
 /*Footer*/

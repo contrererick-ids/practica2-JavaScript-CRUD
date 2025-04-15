@@ -29,15 +29,29 @@ export class ShoppingCartItem {
                         <div class="col-8 cart-item-description">
                             <p class="cart-item-text">${this.description}</p>
                         </div>
-                        <div class="col-4 cart-item-subtotal">    
-                            <p class="cart-item-text">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price)}</p>
-                            <p class="cart-item-text">Cantidad: ${this.quantity}</p>
-                            <p class="cart-item-text">Subtotal: ${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price * this.quantity)}</p>
+                        <div class="col-4 cart-item-subtotal">
+                            <div class="cart-item-subtotal-table">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td><p class="cart-item-text subtotal-table-row-text">Precio:</td>
+                                            <td><p class="cart-item-text subtotal-table-row-value">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price)}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-primary increase-item-quantity" data-product-id="${this.id}">+</button></td>
+                                            <td><p class="cart-item-text">${this.quantity}</td>
+                                            <td><button class="btn btn-primary decrease-item-quantity" data-product-id="${this.id}">-</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><p class="cart-item-text subtotal-table-row-text">Subtotal:</td>
+                                            <td><p class="cart-item-text subtotal-table-row-value">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price * this.quantity)}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-primary remove-from-cart" data-product-id="${this.id}">Eliminar</button>
+                            </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary increase-item-quantity" data-product-id="${this.id}">+</button>
-                    <button class="btn btn-primary decrease-item-quantity" data-product-id="${this.id}">-</button>
-                    <button class="btn btn-primary remove-from-cart" data-product-id="${this.id}">Eliminar</button>
                 </div>
             </div>
         `;

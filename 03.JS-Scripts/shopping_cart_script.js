@@ -30,7 +30,7 @@ export class ShoppingCartItem {
                             <p class="cart-item-text">${this.description}</p>
                         </div>
                         <div class="col-4 cart-item-subtotal">    
-                            <p class="cart-item-text">$${this.price}</p>
+                            <p class="cart-item-text">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price)}</p>
                             <p class="cart-item-text">Cantidad: ${this.quantity}</p>
                             <p class="cart-item-text">Subtotal: ${this.price * this.quantity}</p>
                         </div>

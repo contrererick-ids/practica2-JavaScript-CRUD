@@ -17,39 +17,33 @@ export class ShoppingCartItem {
         cartItemContainer.classList.add('container-fluid', 'p-0', 'm-0', 'shoppingCartItem');
 
         cartItemContainer.innerHTML = `
-            <div class="d-flex cart-item-banner">
-                <div class="col-6 cart-item-img">
+            <div class="justify-content-between d-flex align-items-center cart-item-banner">
+                <div class="col-6 flex-fill cart-item-img">
                     <img src="${this.image}" class="card-img-top" alt="${this.name}">
                 </div>
-                <div class="col-6 cart-item-body">
+                <div class="col-6 flex-fill cart-item-body">
                     <div class="cart-item-header">
                         <h3 class="card-title">${this.name}</h3>
                     </div>
                     <div class="d-flex cart-item-info">
-                        <div class="col-8 cart-item-description">
+                        <div class="col-8 cart-item-description d-flex align-items-center">
                             <p class="cart-item-text">${this.description}</p>
                         </div>
-                        <div class="col-4 cart-item-subtotal">
-                            <div class="cart-item-subtotal-table">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td><p class="cart-item-text subtotal-table-row-text">Precio:</td>
-                                            <td><p class="cart-item-text subtotal-table-row-value">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price)}</td>
-                                        </tr>
-                                        <tr>
-                                            <td><button class="btn btn-primary increase-item-quantity" data-product-id="${this.id}">+</button></td>
-                                            <td><p class="cart-item-text">${this.quantity}</td>
-                                            <td><button class="btn btn-primary decrease-item-quantity" data-product-id="${this.id}">-</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td><p class="cart-item-text subtotal-table-row-text">Subtotal:</td>
-                                            <td><p class="cart-item-text subtotal-table-row-value">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price * this.quantity)}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button class="btn btn-primary remove-from-cart" data-product-id="${this.id}">Eliminar</button>
+                        <div class="col-4 cart-item-subtotal-grid">
+                            <div class="item-subtotal-grid-row justify-content-between d-flex align-items-center">
+                                <p class="cart-item-text subtotal-grid-row-text">Precio:</p>
+                                <p class="cart-item-text subtotal-grid-row-value">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price)}</p>
                             </div>
+                            <div class="item-subtotal-grid-row justify-content-evenly d-flex align-items-center">
+                                <button class="btn btn-warning decrease-item-quantity">-</button>
+                                <p class="cart-item-text subtotal-grid-row-value">${this.quantity}</p>
+                                <button class="btn btn-warning increase-item-quantity">+</button>
+                            </div>
+                            <div class="item-subtotal-grid-row justify-content-between d-flex align-items-center">
+                                <p class="cart-item-text subtotal-grid-row-text">Subtotal:</p>
+                                <p class="cart-item-text subtotal-grid-row-value">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price * this.quantity)}</p>
+                            </div>
+                            <button class="btn btn-danger remove-from-cart" data-product-id="${this.id}"><i class="bi bi-trash-fill"></i></button>
                         </div>
                     </div>
                 </div>

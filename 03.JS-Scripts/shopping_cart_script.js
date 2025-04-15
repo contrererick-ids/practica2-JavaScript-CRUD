@@ -32,7 +32,7 @@ export class ShoppingCartItem {
                         <div class="col-4 cart-item-subtotal">    
                             <p class="cart-item-text">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price)}</p>
                             <p class="cart-item-text">Cantidad: ${this.quantity}</p>
-                            <p class="cart-item-text">Subtotal: ${this.price * this.quantity}</p>
+                            <p class="cart-item-text">Subtotal: ${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price * this.quantity)}</p>
                         </div>
                     </div>
                     <button class="btn btn-primary increase-item-quantity" data-product-id="${this.id}">+</button>

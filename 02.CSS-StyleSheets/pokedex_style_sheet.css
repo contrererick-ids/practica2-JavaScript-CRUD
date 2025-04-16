@@ -1,56 +1,5 @@
 /*-----------------POKEDEX STYLE SHEET-----------------*/
 
-/*Body*/
-body{
-    background-color: rgb(60, 90, 166);
-    margin: 0;
-    padding: 0;
-}
-
-/*Navbar y botones*/
-.navbar-main-nav{
-    font-size: 14pt;
-}
-
-.navbar-elements > *{
-    margin: 5px;
-}
-
-.page-title{
-    text-align: center;
-    color: white;
-    font-size: 20pt;
-}
-
-.search-bar-button{
-    background-color: rgb(40, 40, 40);
-    border-color: rgb(255, 193, 7);
-    color: white;
-}
-
-.search-bar-button:hover{
-    background-color: rgb(204, 0, 0);
-    border-color: rgb(40, 40, 40);
-    color: white;
-}
-
-.dropdown-toggle{
-    background-color:rgb(42, 117, 187);
-    border-color: rgb(255, 193, 7);
-    color: white;
-}
-
-.dropdown-toggle:hover{
-    background-color:rgb(204, 0, 0);
-    border-color: rgb(255, 193, 7);
-    color: white;
-}
-
-/*Separador*/
-hr{
-    border: 2px solid rgb(10,10,10);
-}
-
 /*Pokedex section y cards*/
 .pokeStoreTitle{
     background-color: rgb(230, 230, 230);
@@ -134,27 +83,4 @@ hr{
     background-color: rgb(255, 193, 7);
     border-color: rgb(255, 193, 7);
     color: rgb(40, 40, 40);
-}
-
-/*Footer*/
-.footer{
-    background-color: rgb(30, 30, 30);
-    padding: 10px;
-}
-
-.footer p{
-    color: rgb(230, 230, 230);
-    font-size: 10pt;
-}
-
-.footer img{
-    border: 1px solid rgb(42, 117, 187);
-}
-
-.footer a{
-    color: rgb(230,230,230);
-}
-
-.footer a:hover{
-    color: rgb(255, 0, 0);
 }

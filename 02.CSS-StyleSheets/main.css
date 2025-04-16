@@ -14,13 +14,13 @@ body{
 
 .navbar-elements > *{
     margin: 5px;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 .page-title{
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
     font-size: 18pt;
-    color: white;
+    color: rgb(251, 148, 102);
 }
 
 .search-bar-button{
@@ -29,16 +29,20 @@ body{
     color: white;
 }
 
+.page-title:hover{
+    color: rgb(249, 76, 0);
+    text-shadow: 0 0 1px black; 
+}
+
 .search-bar-button:hover{
     background-color: rgb(251, 148, 102);
-    border-color: rgb(249, 76, 0);
+    border-color: rgb(251, 148, 102);
     color: rgb(28, 27, 26);
 }
 
 .dropdown-toggle{
     background-color:rgb(251, 148, 102);
     border-color: rgb(28, 27, 26);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
     color: rgb(28, 27, 26);
 }

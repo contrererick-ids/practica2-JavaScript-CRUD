@@ -12,13 +12,14 @@
 
 .shopping-cart-body{
     margin: 0;
-    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     background-color: rgb(220, 220, 220);
 }
 
 .empty-cart{
     margin: 0;
-    padding: 0;
+    padding: 15px;
     background-color: rgb(28, 27, 26);
     justify-content: center;
     align-items: center;
@@ -31,7 +32,7 @@
 }
 
 .back-to-catalogue-btn{
-    margin-top: 20px;
+    margin: 10px;
     background-color: rgb(40, 40, 40);
     border-color: rgb(255, 193, 7);
     color: rgb(255, 193, 7);
@@ -146,11 +147,6 @@
 .subtotal-grid-value{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
-}
-
-.btn{
-    padding: auto;
-    margin: 0;
 }
 
 .decrease-item-quantity, .increase-item-quantity{

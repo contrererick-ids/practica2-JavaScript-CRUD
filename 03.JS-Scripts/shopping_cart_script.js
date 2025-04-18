@@ -79,7 +79,7 @@ function displayEmptyCartMessage() {
         <div class="empty-cart">
             <h2 class="mb-1">No hay nada aquí aún.</h2>
             <h2 class="mb-1">Encuéntrate con tu par ideal</h2>
-            <button class="btn btn-primary m-1 back-to-catalogue-btn"><i class="bi bi-cart"></i></button>
+            <button class="btn btn-primary back-to-catalogue-btn"><i class="bi bi-cart"></i></button>
         </div>
     `;
 

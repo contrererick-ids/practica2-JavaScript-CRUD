@@ -14,36 +14,36 @@ export class ShoppingCartItem {
     // Método para renderizar el producto en el carrito de compras
     renderItem() {
         const cartItemContainer = document.createElement('div');
-        cartItemContainer.classList.add('container-fluid', 'p-0', 'm-0', 'shoppingCartItem');
+        cartItemContainer.classList.add('card', 'w-100', 'mb-2', 'shopping-cart-item');
 
         cartItemContainer.innerHTML = `
-            <div class="justify-content-between d-flex align-items-center cart-item-banner">
-                <div class="col-6 flex-fill cart-item-img">
-                    <img src="${this.image}" class="card-img-top" alt="${this.name}">
+            <div class="row cart-item-banner">
+                <div class="col-12 col-md-4 cart-item-img">
+                    <img src="${this.image}" class="img-fluid rounded-start h-100 w-100 card-img-top" alt="${this.name}">
                 </div>
-                <div class="col-6 flex-fill cart-item-body">
-                    <div class="cart-item-header">
+                <div class="col-12 col-md-8 cart-item-body">
+                    <div class="col-12 cart-item-header">
                         <h3 class="card-title">${this.name}</h3>
                     </div>
-                    <div class="d-flex cart-item-info">
-                        <div class="col-8 cart-item-description d-flex align-items-center">
-                            <p class="cart-item-text">${this.description}</p>
-                        </div>
-                        <div class="col-4 cart-item-subtotal-grid">
-                            <div class="item-subtotal-grid-row justify-content-between d-flex align-items-center">
-                                <p class="cart-item-text subtotal-grid-row-text">Precio:</p>
-                                <p class="cart-item-text subtotal-grid-row-value">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price)}</p>
-                            </div>
-                            <div class="item-subtotal-grid-row justify-content-evenly d-flex align-items-center">
+                    <div class="row cart-item-info">
+                        <div class="col-12 col-md-8 item-description">
+                            <p class="item-text">${this.description}</p>
+                            <div class="justify-content-evenly d-flex align-items-center">
                                 <button class="btn btn-warning decrease-item-quantity">-</button>
-                                <p class="cart-item-text subtotal-grid-row-value">${this.quantity}</p>
+                                <h5 class="item-quantity">${this.quantity}</h5>
                                 <button class="btn btn-warning increase-item-quantity">+</button>
+                                <button class="btn btn-danger remove-from-cart" data-product-id="${this.id}"><i class="bi bi-trash-fill"></i></button>   
                             </div>
-                            <div class="item-subtotal-grid-row justify-content-between d-flex align-items-center">
-                                <p class="cart-item-text subtotal-grid-row-text">Subtotal:</p>
-                                <p class="cart-item-text subtotal-grid-row-value">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price * this.quantity)}</p>
+                        </div>
+                        <div class="col-12 col-md-4 item-subtotal-grid">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                <p class="subtotal-grid-value">Precio:</p>
+                                <p>${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price)}</p>
                             </div>
-                            <button class="btn btn-danger remove-from-cart" data-product-id="${this.id}"><i class="bi bi-trash-fill"></i></button>
+                            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                <p class="subtotal-grid-value">Subtotal:</p>
+                                <p>${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price * this.quantity)}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,8 +70,12 @@ export class ShoppingCartItem {
     }
 }
 
+// Definimos una variable que apunta a "shoppingCartGrid" para cargar ya sea el carrito o el mensaje de que está vacío en el shoppingCart.html
+const shoppingCartBody = document.getElementById('shoppingCartBody');
 // Definimos una variable que apunta a "shoppingCartGrid" dónde se cargarán los productos del carrito de compras en el shoppingCart.html
 const shoppingCartGrid = document.getElementById('shoppingCartGrid');
+// Definimos una variable que apunta a "shoppingCartResume" dónde se cargará el resumen del carrito de compras en el shoppingCart.html
+const shoppingCartResume = document.getElementById('shoppingCartResume');
 
 // Función para cargar el carrito de compras
 async function loadShoppingCart() {
@@ -104,16 +108,16 @@ async function loadShoppingCart() {
 
 // Función para mostrar un mensaje indicando que el carrito está vacío
 function displayEmptyCartMessage() {
-    shoppingCartGrid.innerHTML = `
-        <div class="emptyCart">
-            <h2 class="emptyCartTitle">No hay nada aquí aún.</h2>
-            <h2>Encuéntrate con tu par ideal</h2>
-            <button class="btn btn-primary back-to-catalogue-btn"><i class="bi bi-cart"></i></button>
+    shoppingCartBody.innerHTML = `
+        <div class="empty-cart">
+            <h2 class="mb-1">No hay nada aquí aún.</h2>
+            <h2 class="mb-1">Encuéntrate con tu par ideal</h2>
+            <button class="btn btn-primary m-1 back-to-catalogue-btn"><i class="bi bi-cart"></i></button>
         </div>
     `;
 
     // Guardamos el botón para regresar a la página de productos en una variable
-    const backToCatalogueButton = shoppingCartGrid.querySelector('.back-to-catalogue-btn');
+    const backToCatalogueButton = shoppingCartBody.querySelector('.back-to-catalogue-btn');
     // Agregamos un EventListener al botón para que el botón mande a llamar la función para regresar a la página de productos
     backToCatalogueButton.addEventListener('click', goBackToCatalogue);
 

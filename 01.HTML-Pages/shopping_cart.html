@@ -49,11 +49,14 @@
 
     <!--Carrito de Compras-->
     <div class="container-fluid p-0 m-0">
-      <div class="shoppingCartTitle">
-        <h1 class="text-center mb-4"> Mi Carrito </h1>
+      <div class="shopping-cart-header">
+        <h1 class="text-center mb-2"> Mi Carrito </h1>
       </div>
-      <hr>
-      <div id="shoppingCartGrid" class="row">
+      <div id="shoppingCartBody" class="row shopping-cart-body">
+        <div id="shoppingCartGrid" class="col-12 col-lg-6 offset-md-1 shopping-cart-grid">
+        </div>
+        <div id="shoppingCartResume" class="col-12 col-lg-4 shopping-cart-resume">
+        </div>
       </div>
     </div>
     
@@ -61,7 +64,6 @@
     <script type="module" src="../03.JS-Scripts/shopping_cart_script.js"></script>
 
   </body>
-  <hr>
 
   <footer class="d-flex flex-wrap justify-content-between align-items-center footer">
     <p class="col-md-4 mb-0">© 2025 FACEZ</p>

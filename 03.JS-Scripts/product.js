@@ -80,6 +80,23 @@ export default class Product {
         this.price = price;
         this.description = description;
     }
+
+    static createFromObject(product){
+        // Creamos un objeto con los datos del producto
+        const productData = {
+            id: product.id,
+            name: product.name,
+            image: product.image,
+            description: product.description,
+            price: product.price,
+        }
+        // Validamos que los datos del producto sean válidos
+        if(!productData.id || !productData.name || !productData.price){
+            throw new Error("Missing required product data");
+        }
+
+        return new Product(productData);
+    }
     
     // Método para renderizar la tarjeta del producto
     renderCard() {

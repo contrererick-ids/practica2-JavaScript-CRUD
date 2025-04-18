@@ -1,14 +1,10 @@
 import * as productModule from '../03.JS-Scripts/product.js';
 
 // Definimos la clase ShoppingCartItem que representa un producto en el carrito de compras
-export class ShoppingCartItem {
-    constructor({ id, name, image, description, price, quantity }) {
-        this.id = id;
-        this.name = name;
-        this.image = image;
-        this.price = price;
-        this.description = description;
-        this.quantity = quantity;
+export class ShoppingCartItem extends productModule.Product {
+    constructor(productData) {
+        super(productData);
+        this.quantity = 1;
     } 
 
     // Método para renderizar el producto en el carrito de compras
@@ -144,7 +140,7 @@ function addToCart(product) {
         if (existingCartItem) {
             existingCartItem.quantity += 1;
         } else {
-            currentCartItems.push({
+            const cartItem = new ShoppingCartItem({
                 id: product.id,
                 name: product.name,
                 image: product.image,
@@ -152,6 +148,7 @@ function addToCart(product) {
                 description: product.description,
                 quantity: 1
             });
+            currentCartItems.push(cartItem);
         }
         
         // Guardamos el carrito actualizado en el localStorage pasando el arreglo de productos como un string con JSON.stringify

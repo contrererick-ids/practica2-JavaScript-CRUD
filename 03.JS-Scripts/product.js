@@ -71,7 +71,7 @@ async function createFromJson(API){
 }
 
 // Definición de la clase Product
-export default class Product {
+export class Product {
     // Constructor de la clase Product
     constructor({ id, name, image, description, price}) {
         this.id = id;

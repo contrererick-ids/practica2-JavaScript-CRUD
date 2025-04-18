@@ -40,7 +40,7 @@ Para poder interactuar con el servidor, debemos de ser capaz de interpretar obje
 Esta tal vez sea la parte más difícil de la práctica, la dejamos al inicio para que consultes al profesor en caso de que lo requieras.
 ● addItem(productUuid, amount): Esta función debe agregar al carrito un nuevo artículo, o en caso de que exista ya el producto, actualizar la cantidad a la suma de ambos
 valores (cantidad original + cantidad nueva).
-Para general e UUID puedes implementar la función randomUUID( ejemplo en el CRUD de usuarios).
+Para generar el UUID puedes implementar la función randomUUID (ejemplo en el CRUD de usuarios).
 https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID
 ● updateItem(productUuid, newAmount): Esta función debe actualizar el producto correspondiente a la nueva cantidad. Si el nuevo valor es negativo, mandamos error, si es igual a 0, eliminamos el producto del carrito y si es mayor a 0, entonces actualizamos al nuevo valor.
 ● removeItem(productUuid): Esta función debe eliminar el producto correspondiente.
@@ -48,7 +48,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID
 ### Funciones para Manejo de Datos
 Debemos agregar los métodos correspondientes para leer (getProducts(), getProductById(uuid)), para crear (createProduct(product)), para actualizar (updateProduct(uuid, updatedProduct)) y para eliminar (deleteProduct(uuid)).
 Además del CRUD, de manera opcional puedes agregar un método para búsqueda por categoría o por nombre del producto. Para esto crearemos findProduct(query), en donde query es un String, en el cual pondremos la categoría y el nombre a buscar en el siguiente formato “<category>: <title>”.
-En caso de que el usuario pase solo la categoría (“<category>:”) haremos la búsqueda de los0 productos que contengan esa cadena dentro de su categoría. De manera similar si el usuario pasa solo el nombre (“<title>”) haremos la búsqueda de los productos que contengan esa cadena dentro de su nombre.
+En caso de que el usuario pase solo la categoría (“<category>:”) haremos la búsqueda de los productos que contengan esa cadena dentro de su categoría. De manera similar si el usuario pasa solo el nombre (“<title>”) haremos la búsqueda de los productos que contengan esa cadena dentro de su nombre.
 Para el caso combinado, debemos dividir la consulta en las 2 partes correspondientes y aplicar ambos filtros para la lista de productos.
 ### Pruebas y Ejemplos
 En index.js mandaremos llamar nuestras diferentes funciones para validar que todo se ejecute según lo planeado.

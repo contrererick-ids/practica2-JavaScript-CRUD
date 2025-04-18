@@ -55,31 +55,20 @@ export class API {
         }
     }
 }
-// Exportamos una variable "api" que contiene una instancia de la clase API para poder usarla en otros archivos
-export const api = new API();
 
-// Función para cargar los productos en el contenedor "productsCatalogue" usando el método renderCard() de la clase Product
-async function loadProducts(productsCatalogue) {
-    // Limpiamos el contenedor de productos para asegurarnos que no se dupliquen los productos al cargar la página de nuevo
-    productsCatalogue.innerHTML = "";
-    
-    // Hacemos un request a la API
-    try {
-        const data = await api.getAll();
-        
-        // Recorremos los productos de data y los cargamos en el contenedor con renderCard()
-        for (const product of data) {
-            const productObj = new Product(product);
-            productsCatalogue.appendChild(productObj.renderCard());
-        }
-        
-        //En caso de que haya un error, lo mostramos en la consola
-    } catch (error) {
-        console.error("Error in loadProducts: ", error);
+// Función para crear un array de productos a partir de los datos obtenidos de la API
+async function createFromJson(API){
+    try{
+        // Hacemos un request a la API y guardamos en data los datos obtenidos de la API usando el método getAll()
+        const data = await API.getAll();
+        // Usando .map() creamos un nuevo array de productos a partir de los datos obtenidos de la API
+        return data.map(productsData => new Product(productsData));
+    }catch (error) {
+        console.error("Error creating products from JSON: ", error);
+        return [];
     }
+
 }
-// Exportamos también nuestra función loadProducts() para poder usarla en otros archivos
-export { loadProducts };
 
 // Definición de la clase Product
 export default class Product {
@@ -91,30 +80,54 @@ export default class Product {
         this.price = price;
         this.description = description;
     }
-
+    
     // Método para renderizar la tarjeta del producto
     renderCard() {
         const card = document.createElement("div");
         card.classList.add("col");
-
+        
         card.innerHTML = `
-            <div class="card product-card" data-product-id="${this.id}">
-                <img src="${this.image}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">${this.name}</h5>
-                    <div class="card-product-info row justify-content-between">
-                        <p class="card-text">${this.description}</p>
-                        <p class="card-product-price">$${this.price} MXN</p>
-                    </div>
-                    <div class="d-flex justify-content-evenly card-buttons">
-                        <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
-                        <button class="btn btn-primary save-product"><i class="bi bi-heart"></i></button>
-                        <button class="btn btn-primary add-to-cart"><i class="bi bi-cart-plus"></i></button>
-                    </div>
-                </div>
-            </div> 
-            `;
-            
+        <div class="card product-card" data-product-id="${this.id}">
+        <img src="${this.image}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">${this.name}</h5>
+        <div class="card-product-info row justify-content-between">
+        <p class="card-text">${this.description}</p>
+        <p class="card-product-price">$${this.price} MXN</p>
+        </div>
+        <div class="d-flex justify-content-evenly card-buttons">
+        <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+        <button class="btn btn-primary save-product"><i class="bi bi-heart"></i></button>
+        <button class="btn btn-primary add-to-cart"><i class="bi bi-cart-plus"></i></button>
+        </div>
+        </div>
+        </div> 
+        `;
+        
         return card;
     }
 }
+
+// Definimos una instancia de la clase API
+export const api = new API();
+
+// Función para cargar los productos en el contenedor "productsCatalogue" usando el método renderCard() de la clase Product
+async function loadProducts(productsCatalogue) {
+    // Limpiamos el contenedor de productos para asegurarnos que no se dupliquen los productos al cargar la página de nuevo
+    productsCatalogue.innerHTML = "";
+    // Hacemos un request a la API
+    try {
+        // Creamos un array de productos a partir de los datos obtenidos de la API usando la función createFromJson() y la API como argumento
+        const products = await createFromJson(api);
+        // Iteramos sobre cada producto
+        products.forEach(product => {
+            // Renderizamos la tarjeta de cada producto y la agregamos al contenedor productsCatalogue usando el método appendChild()
+           productsCatalogue.appendChild(product.renderCard()); 
+        })
+    }catch (error) {
+        console.error("Error in loadProducts: ", error);
+    }
+}
+
+// Exportamos también nuestra función loadProducts() para poder usarla en otros archivos
+export { loadProducts };

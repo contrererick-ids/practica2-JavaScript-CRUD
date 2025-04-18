@@ -32,7 +32,7 @@ export class ShoppingCartItem {
                                 <button class="btn btn-warning decrease-item-quantity">-</button>
                                 <h5 class="item-quantity">${this.quantity}</h5>
                                 <button class="btn btn-warning increase-item-quantity">+</button>
-                                <button class="btn btn-danger remove-from-cart" data-product-id="${this.id}"><i class="bi bi-trash-fill"></i></button>   
+                                <button class="btn btn-danger remove-from-cart" data-product-id="${this.id}"><i class="bi bi-trash-fill"></i></button>
                             </div>
                         </div>
                         <div class="col-12 col-md-4 item-subtotal-grid">
@@ -77,6 +77,32 @@ const shoppingCartGrid = document.getElementById('shoppingCartGrid');
 // Definimos una variable que apunta a "shoppingCartResume" dónde se cargará el resumen del carrito de compras en el shoppingCart.html
 const shoppingCartResume = document.getElementById('shoppingCartResume');
 
+// Función para mostrar un mensaje indicando que el carrito está vacío
+function displayEmptyCartMessage() {
+    shoppingCartBody.innerHTML = `
+        <div class="empty-cart">
+            <h2 class="mb-1">No hay nada aquí aún.</h2>
+            <h2 class="mb-1">Encuéntrate con tu par ideal</h2>
+            <button class="btn btn-primary m-1 back-to-catalogue-btn"><i class="bi bi-cart"></i></button>
+        </div>
+    `;
+
+    // Guardamos el botón para regresar a la página de productos en una variable
+    const backToCatalogueButton = shoppingCartBody.querySelector('.back-to-catalogue-btn');
+    // Agregamos un EventListener al botón para que el botón mande a llamar la función para regresar a la página de productos
+    backToCatalogueButton.addEventListener('click', goBackToCatalogue);
+
+}
+
+//Función para regresar a la página de productos cuando el carritoe está vacío
+function goBackToCatalogue() {
+    // Primero validamos el dominio en el que estamos para definir el path a utilizar
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    const path = isGitHubPages ? '/practica2-JavaScript-CRUD/' : '/';
+    // Window location href nos permite redireccionar a la página que le asignemos (tiene que ser un path válido)
+    window.location.href = path + 'index.html';
+}
+
 // Función para cargar el carrito de compras
 async function loadShoppingCart() {
     try {
@@ -104,23 +130,6 @@ async function loadShoppingCart() {
         console.error('Error loading shopping cart:', error);
         displayEmptyCartMessage();
     }
-}
-
-// Función para mostrar un mensaje indicando que el carrito está vacío
-function displayEmptyCartMessage() {
-    shoppingCartBody.innerHTML = `
-        <div class="empty-cart">
-            <h2 class="mb-1">No hay nada aquí aún.</h2>
-            <h2 class="mb-1">Encuéntrate con tu par ideal</h2>
-            <button class="btn btn-primary m-1 back-to-catalogue-btn"><i class="bi bi-cart"></i></button>
-        </div>
-    `;
-
-    // Guardamos el botón para regresar a la página de productos en una variable
-    const backToCatalogueButton = shoppingCartBody.querySelector('.back-to-catalogue-btn');
-    // Agregamos un EventListener al botón para que el botón mande a llamar la función para regresar a la página de productos
-    backToCatalogueButton.addEventListener('click', goBackToCatalogue);
-
 }
 
 // Función para agregar un producto al carrito de compras
@@ -185,15 +194,15 @@ function increaseItemQuantity(productId) {
             //Actualizamos el carrito en el localStorage con el carrito actualizado
             localStorage.setItem('shoppingCartLocalStorage', JSON.stringify(currentCartItems));
             //Volvemos a cargar el carrito de compras
-            loadShoppingCart(); 
+            loadShoppingCart();
         } else {
             // Si no encontramos el producto, mostramos un mensaje de error en la consola
-            console.error('Product not found in the cart'); 
+            console.error('Product not found in the cart');
             alert('Error no se pudo aumentar la cantidad del producto.');
         }
     } catch (error) {
         // En caso de que haya un error al aumentar la cantidad del producto, mostramos un mensaje de error en la consola
-        console.error('Product not found in the cart'); 
+        console.error('Product not found in the cart');
             alert('Error no se pudo aumentar la cantidad del producto.');
     }
 }
@@ -214,26 +223,17 @@ function decreaseItemQuantity(productId) {
             //Actualizamos el carrito en el localStorage con el carrito actualizado
             localStorage.setItem('shoppingCartLocalStorage', JSON.stringify(currentCartItems));
             //Volvemos a cargar el carrito de compras
-            loadShoppingCart(); 
+            loadShoppingCart();
         } else {
             // Si no encontramos el producto, mostramos un mensaje de error en la consola
-            console.error('Product not found in the cart'); 
+            console.error('Product not found in the cart');
             alert('Error no se pudo disminuir la cantidad del producto.');
         }
     } catch (error) {
         // En caso de que haya un error al disminuir la cantidad del producto, mostramos un mensaje de error en la consola
-        console.error('Product not found in the cart'); 
+        console.error('Product not found in the cart');
             alert('Error no se pudo disminuir la cantidad del producto.');
     }
-}
-
-//Función para regresar a la página de productos cuando el carritoe está vacío
-function goBackToCatalogue() {
-    // Primero validamos el dominio en el que estamos para definir el path a utilizar
-    const isGitHubPages = window.location.hostname.includes('github.io');
-    const path = isGitHubPages ? '/practica2-JavaScript-CRUD/' : '/';
-    // Window location href nos permite redireccionar a la página que le asignemos (tiene que ser un path válido)
-    window.location.href = path + 'index.html';
 }
 
 document.addEventListener('DOMContentLoaded', () => {

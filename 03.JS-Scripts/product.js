@@ -105,19 +105,19 @@ export class Product {
         
         card.innerHTML = `
         <div class="card product-card" data-product-id="${this.id}">
-        <img src="${this.image}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">${this.name}</h5>
-        <div class="card-product-info row justify-content-between">
-        <p class="card-text">${this.description}</p>
-        <p class="card-product-price">$${this.price} MXN</p>
-        </div>
-        <div class="d-flex justify-content-evenly card-buttons">
-        <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
-        <button class="btn btn-primary save-product"><i class="bi bi-heart"></i></button>
-        <button class="btn btn-primary add-to-cart"><i class="bi bi-cart-plus"></i></button>
-        </div>
-        </div>
+            <img src="${this.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${this.name}</h5>
+                <div class="row justify-content-between card-product-info">
+                    <p class="col-12 col-md-8 card-text">${this.description}</p>
+                    <p class="col-12 col-md-4 d-flex justify-content-center align-items-center card-product-price">${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(this.price)} MXN</p>
+                </div>
+                <div class="d-flex justify-content-evenly card-buttons">
+                    <a href="#" class="btn  btn-secondary see-more-button">Ver más</a>
+                    <button class="btn btn-primary save-product"><i class="bi bi-heart"></i></button>
+                    <button class="btn btn-primary add-to-cart"><i class="bi bi-cart-plus"></i></button>
+                </div>
+            </div>
         </div> 
         `;
         

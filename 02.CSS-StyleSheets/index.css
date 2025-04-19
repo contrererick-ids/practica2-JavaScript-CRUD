@@ -22,70 +22,79 @@
     object-fit: contain; 
 }
 
+/*Product section y cards*/
 .products-section{
     padding: 25px;
     padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-/*Product section y cards*/
 .products-section-title{
     padding: 10px;
-    color: rgb(40, 40, 40);
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
 }
 
-.products-section .products-section-grid{
+.products-section-title h2{
+    margin: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(40, 40, 40);
+}
+
+.products-section-grid{
+    margin: 0;
     padding: 5px;
-    margin: auto;
+}
+
+.col{
+    margin: 0;
+    padding: 0;
+    border: 1px solid rgb(220, 220, 220);
 }
 
 .card{
-    border: 1px solid rgb(40, 40, 40);
+    margin: 0;
     background-color: rgb(40, 40, 40);
-    max-width: 350px;
+    border-radius: 0;
 }
 
 .card-title{
+    margin: 0px;
+    padding: 0px;
     height: 25px;
+    text-align: center;
     color: white;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center;
-    padding: 0px;
-    margin: 0px;
 }
 
 .card-text{
+    margin: 0;
+    padding: 10px;
     height: 80px;
-    width: 60%;
+    text-align: left;
     display: -webkit-box;
-    color: white;
     line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-align: left;
     text-overflow: ellipsis;
-    padding: 10px;
-    margin: 0;
+    color: white;
 }
 
 .card-product-price{
-    width: 40%;
+    margin: 0;
     padding: 5px;
-    margin: auto;
     text-align: center;
     color: white;
-    font-size: 14pt;
 }
 
 .card-img-top{
     height: 200px;
     background-color: white;
+    border-radius: 0;
     object-fit: cover;
-    border-bottom: 1px solid rgb(40, 40, 40);
 }
 
 .card-buttons{

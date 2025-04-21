@@ -157,7 +157,7 @@ hr{
 .btn-user-login-confirmation, .btn-user-register-confirmation{
     margin: 0;
     padding: 5px;
-    boder: 0;
+    border: 0;
     border: 1px solid rgb(251, 148, 102);
     background-color: rgb(251, 148, 102);
     color: rgb(28, 27, 26);

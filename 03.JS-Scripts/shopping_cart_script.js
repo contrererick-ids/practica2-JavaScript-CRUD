@@ -4,7 +4,7 @@ import * as productModule from '../03.JS-Scripts/product.js';
 export class ShoppingCartItem extends productModule.Product {
     constructor(productData) {
         super(productData);
-        this.quantity = 1;
+        this.quantity = productData.quantity || 1;
     } 
 
     // Método para renderizar el producto en el carrito de compras

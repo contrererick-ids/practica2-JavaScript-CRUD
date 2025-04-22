@@ -121,6 +121,7 @@ async function loadShoppingCart() {
             const cartItem = new ShoppingCartItem(item);
             shoppingCartGrid.appendChild(cartItem.renderItem());
         });
+        calculeTotal();
     } catch (error) {
         // En caso de que haya un error al cargar el carrito de compras, mostramos un mensaje de error en la consola
         console.error('Error loading shopping cart:', error);
@@ -159,6 +160,73 @@ function addToCart(product) {
         console.error('Error adding to cart:', error);
         alert('Error al añadir el producto al carrito');
     }
+}
+
+//Función para calcular el total del carrito de compras
+function calculeTotal(){
+    // Definimos una variable que apunta al localStorage dónde se guardan los productos del carrito de compras en el shoppingCart.html
+    const savedCartData = localStorage.getItem('shoppingCartLocalStorage');
+    // Validamos si hay productos en el carrito de compras
+    const cartItems = JSON.parse(savedCartData || '[]');
+    // Validamos si hay productos en el carrito de compras
+    if (!cartItems || cartItems.length === 0) {
+        displayEmptyCartMessage();
+        return;
+    }
+    // Limpiamos el contenedor para evitar que el resumen de la compra se duplique
+    shoppingCartResume.innerHTML = '';
+    const cartItemsResume = document.createElement('div');
+    cartItemsResume.classList.add('col-12','d-flex','flex-wrap','align-items-center','cart-items-resume');
+    cartItemsResume.innerHTML = `
+        <div class="col-12 d-flex align-items-center items-resume-header">
+            <h3>Resumen de Compra</h3>
+        </div>
+        <div id="itemsResumeBody" class="col-12 align-items-center items-resume-body">
+            <div class="col-12 d-flex justify-content-between align-items-center items-resume-titles">
+                <div class="col-4 align-items-center"><h5>Nombre</h5></div>
+                <div class="col-2 align-items-center"><h5>Cantidad</h5></div>
+                <div class="col-3 align-items-center"><h5>Precio</h5></div>
+                <div class="col-3 align-items-center"><h5>Subtotal</h5></div>
+            </div>
+        </div>
+        <div id="itemsResumeTotal" class="col-12 d-flex justify-content-between align-items-center items-resume-total">
+        </div>
+        <div class="col-12 d-flex flex-wrap align-items-center items-resume-footer">
+            <button class="col-12 btn btn-warning mb-2">Pagar</button>
+            <button class="col-12 btn btn-danger mb-2">Cancelar</button>
+        </div>
+    `;
+    // Agregamos el contenedor de Resumen de compras al HTML
+    shoppingCartResume.appendChild(cartItemsResume);
+
+    // Apuntamos al "ID" del contenedor que tendrá el "body" del Resumen de compras
+    const itemsResumeBody = document.getElementById('itemsResumeBody');
+    // Creamos una variable para almacenar el total
+    let totalAmount = 0;
+    //Recorremos los productos del carrito de compras para extraer su precio y cantidad ordenada
+    cartItems.forEach(item => {
+        // Guardamos cada producto en la variable cartItem
+        const cartItem = new ShoppingCartItem(item);
+        // Creamos un div para cada producto
+        const itemResumeDiv = document.createElement('div');
+        itemResumeDiv.classList.add('col-12','d-flex','justify-content-between','align-items-center','item-resume-info');
+        itemResumeDiv.innerHTML = `
+            <div class="col-4 align-items-center item-info-text"><p>${cartItem.name}</p></div>
+            <div class="col-2 align-items-center item-info-text"><p>${cartItem.quantity}</p></div>
+            <div class="col-3 align-items-center item-info-text"><p>${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(cartItem.price)}</p></div>
+            <div class="col-3 align-items-center item-info-text"><p>${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(cartItem.price*cartItem.quantity)}</p></div>
+        `;
+        totalAmount += cartItem.price*cartItem.quantity;
+        itemsResumeBody.appendChild(itemResumeDiv);
+    });
+
+    // Apuntamos al "ID" del contenedor que tendrá la suma total de la compra
+    const itemsResumeTotal = document.getElementById('itemsResumeTotal');
+    itemsResumeTotal.innerHTML = `
+        <div class="col-6 justify-content-center item-total-text"><h6>Total a pagar</h6></div>
+        <div class="col-6 justify-content-center item-total-value"><h6>${Intl.NumberFormat("es-MX",{style: "currency", currency: "MXN"}).format(totalAmount)}</h6></div>
+    `;
+
 }
 
 // Función para remover un producto del carrito de compras
@@ -233,6 +301,7 @@ function decreaseItemQuantity(productId) {
     }
 }
 
+// Cuando cargue el DOM mandamos a llamar a la función loadShoppingCard()
 document.addEventListener('DOMContentLoaded', () => {
     // Cargar el carrito si estamos en la página del carrito
     if (shoppingCartGrid) {
@@ -241,4 +310,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Exportamos las funciones para que puedan ser utilizadas en otros archivos
-export { loadShoppingCart, addToCart};
+export { loadShoppingCart, addToCart, calculeTotal};
